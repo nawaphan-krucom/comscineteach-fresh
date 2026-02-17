@@ -7,10 +7,11 @@ import {
   ShopItem, IntellectualPropertyConcept, CreativeCommonsLicense
 } from './types';
 // ============================================================================
-// Option 1: Student export from Firebase users_index (richer data with seat numbers & auth info)
-// Contains: uid, studentId, room, seatNumber, migratedToAuth, passwordResetRequired, etc.
+// Optional student export (may not exist in this workspace)
+// If you need to provide a JSON export for richer student metadata, place it
+// at `scripts/users_index.json`. When not present we keep the variable null.
 // ============================================================================
-import STUDENT_EXPORT from './scripts/users_index.json';
+let STUDENT_EXPORT: any = null;
 
 export const GOOGLE_SCRIPT_URL = "";
 

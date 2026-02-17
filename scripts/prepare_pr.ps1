@@ -23,7 +23,7 @@ if (-not (Test-Path './package.json')) { ExitWith "package.json not found in cur
 Write-Host "Node:" (node -v) "| npm:" (npm -v)
 
 # 2) Git availability
-$gitExists = (Get-Command git -ErrorAction SilentlyContinue) -ne $null
+$gitExists = $null -ne (Get-Command git -ErrorAction SilentlyContinue)
 if (-not $gitExists) { ExitWith "git is not installed or not on PATH." }
 
 $hasGit = Test-Path .git
@@ -34,31 +34,39 @@ if (-not $hasGit) {
     if (-not $ForceInit) { ExitWith "Aborting: .git missing and no remote provided." }
   }
   Write-Host "Initializing git repository..."
-  git init || ExitWith "git init failed"
+  git init
+  if ($LASTEXITCODE -ne 0) { ExitWith "git init failed" }
   if ($RemoteUrl) {
-    git remote add origin $RemoteUrl || Write-Host "remote add failed — remote may already exist" -ForegroundColor Yellow
-    git fetch origin --depth=1 || Write-Host "fetch origin failed (non-fatal)" -ForegroundColor Yellow
+    git remote add origin $RemoteUrl
+    if ($LASTEXITCODE -ne 0) { Write-Host "remote add failed — remote may already exist" -ForegroundColor Yellow }
+    git fetch origin --depth=1
+    if ($LASTEXITCODE -ne 0) { Write-Host "fetch origin failed (non-fatal)" -ForegroundColor Yellow }
   }
 }
 
 # 3) Install deps (handle lockfile)
 if (Test-Path package-lock.json) {
   Write-Host "Found package-lock.json → running npm ci"
-  npm ci || ExitWith "npm ci failed"
+  npm ci
+  if ($LASTEXITCODE -ne 0) { ExitWith "npm ci failed" }
 } else {
   Write-Host "Running npm install"
-  npm install || ExitWith "npm install failed"
+  npm install
+  if ($LASTEXITCODE -ne 0) { ExitWith "npm install failed" }
 }
 
 # 4) Run env guard, tests, build
 Write-Host "Running env check"
-npm run check-env || ExitWith "check-env failed"
+npm run check-env
+if ($LASTEXITCODE -ne 0) { ExitWith "check-env failed" }
 
 Write-Host "Running unit tests"
-npm test || ExitWith "npm test failed"
+npm test
+if ($LASTEXITCODE -ne 0) { ExitWith "npm test failed" }
 
 Write-Host "Building production bundle"
-npm run build || ExitWith "build failed"
+npm run build
+if ($LASTEXITCODE -ne 0) { ExitWith "build failed" }
 
 # 5) Create branch and commit changes (stage only files that exist)
 $branch = 'ci/pr/connect-live-firebase'
@@ -90,18 +98,21 @@ if ($unstaged) {
 
 # Commit
 $commitMsg = 'chore: point to computing-science-2569, add env guards, redact SA, fix DataContext local-seed + TS import'
-if ((git rev-parse --verify HEAD) -ne $null) {
-  git commit -m "$commitMsg" || Write-Host "No changes to commit or commit failed" -ForegroundColor Yellow
+if ($null -ne (git rev-parse --verify HEAD)) {
+  git commit -m "$commitMsg"
+  if ($LASTEXITCODE -ne 0) { Write-Host "No changes to commit or commit failed" -ForegroundColor Yellow }
 } else {
   git add -A
-  git commit -m "$commitMsg" || ExitWith "Initial commit failed"
+  git commit -m "$commitMsg"
+  if ($LASTEXITCODE -ne 0) { ExitWith "Initial commit failed" }
 }
 
 # 6) Push and open PR if possible
-$hasRemote = (git remote) -ne $null
+$hasRemote = $null -ne (git remote)
 if ($hasRemote) {
   Write-Host "Pushing branch to origin..."
-  git push -u origin $branch || Write-Host "Push failed — check credentials/remote" -ForegroundColor Yellow
+  git push -u origin $branch
+  if ($LASTEXITCODE -ne 0) { Write-Host "Push failed — check credentials/remote" -ForegroundColor Yellow }
 } else {
   Write-Host "No git remote configured. Set origin and push manually." -ForegroundColor Yellow
 }
@@ -109,7 +120,8 @@ if ($hasRemote) {
 # Create PR with gh if available
 if (Get-Command gh -ErrorAction SilentlyContinue) {
   Write-Host "Creating PR with gh..."
-  gh pr create --base main --head $branch --title "chore: env guards + point app to computing-science-2569; redact SA; fix local-seed" --body "$(Get-Content PR_BODY.md -Raw)" || Write-Host "gh pr create failed (you may need to authenticate gh CLI)" -ForegroundColor Yellow
+  gh pr create --base main --head $branch --title "chore: env guards + point app to computing-science-2569; redact SA; fix local-seed" --body "$(Get-Content PR_BODY.md -Raw)"
+  if ($LASTEXITCODE -ne 0) { Write-Host "gh pr create failed (you may need to authenticate gh CLI)" -ForegroundColor Yellow }
 } else {
   Write-Host "gh CLI not available — create PR via GitHub UI using branch: $branch" -ForegroundColor Yellow
 }
