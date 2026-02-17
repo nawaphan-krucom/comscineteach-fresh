@@ -8,7 +8,7 @@ export default defineConfig({
       output: {
         manualChunks(id: string) {
           if (id.includes('node_modules')) {
-            if (id.includes('xlsx')) return 'vendor-xlsx';
+            if (id.includes('exceljs')) return 'vendor-exceljs';
             if (id.includes('chart.js') || id.includes('react-chartjs-2')) return 'vendor-chartjs';
             if (id.includes('pdfkit')) return 'vendor-pdfkit';
             if (id.includes('fuse.js')) return 'vendor-fuse';
