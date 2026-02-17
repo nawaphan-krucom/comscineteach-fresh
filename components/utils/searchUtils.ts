@@ -13,9 +13,9 @@ export function calculateSimilarity(a: string, b: string): number {
   return best / Math.max(A.length, B.length || 1);
 }
 
-export function highlightMatches(text: string, query: string, fuzzyEnabled?: boolean, fuzzyThreshold?: number): string {
-  if (!query) return text;
-  // If fuzzy matching requested, we currently fall back to simple substring highlighting.
+export function highlightMatches(text: string, query: string, _fuzzyEnabled?: boolean, _fuzzyThreshold?: number): string {
+  if (!query) return text;  // acknowledge optional args to avoid lint warnings
+  void _fuzzyEnabled; void _fuzzyThreshold;  // If fuzzy matching requested, we currently fall back to simple substring highlighting.
   try {
     const pattern = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const re = new RegExp(pattern, 'gi');

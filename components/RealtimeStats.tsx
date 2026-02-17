@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../firebase';
-import { ViewState } from '../types';
 
 const RealtimeStats: React.FC<{ onBack?: () => void }> = ({ onBack }) => {
   const [usersCount, setUsersCount] = useState<number | null>(null);
@@ -34,7 +33,7 @@ const RealtimeStats: React.FC<{ onBack?: () => void }> = ({ onBack }) => {
       setStatus('Failed');
     }
 
-    return () => { unsubUsers && unsubUsers(); unsubProg && unsubProg(); };
+    return () => { if (unsubUsers) unsubUsers(); if (unsubProg) unsubProg(); };
   }, []);
 
   return (

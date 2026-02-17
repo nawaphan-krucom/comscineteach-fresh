@@ -21,7 +21,7 @@ const firebaseConfig = {
 console.info(`Firebase config active projectId=${firebaseConfig.projectId} (env override=${Boolean(import.meta.env.VITE_FIREBASE_PROJECT_ID)})`);
 
 // Initialize Firebase App
-const app = firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 const env = (import.meta && (import.meta.env && import.meta.env.VITE_FIREBASE_ENV)) || undefined;
 // Read raw env flags (use safer access to import.meta.env)
 const _metaEnv = (import.meta && (import.meta.env)) || {} as any;
@@ -37,9 +37,7 @@ if (useEmulatorFlag && showFirebaseProject) {
 console.log(`Firebase app initialized (env=${env || 'production'}, emulator=${effectiveUseEmulator})`);
 
 // Configure for development (enable emulators)
-const hostname = window && window.location && window.location.hostname;
 // Determine emulator mode: explicit flag only (no implicit localhost auto-toggle)
-const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1';
 const isEmulator = effectiveUseEmulator;
 
 // Get service instances
@@ -95,7 +93,7 @@ export const FIREBASE_PROJECT_ID = firebaseConfig.projectId;
 // Also expose a read-only global for quick runtime verification in the browser (dev/staging only)
 try {
   if (typeof window !== 'undefined') (window as any).__FIREBASE_PROJECT_ID = firebaseConfig.projectId;
-} catch (e) {
+} catch {
   /* ignore in non-browser environments */
 }
 

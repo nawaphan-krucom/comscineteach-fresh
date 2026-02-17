@@ -1,6 +1,6 @@
 import React from 'react';
 import type { User, UserProgress } from '../types';
-import Emoji from './primitives/Emoji';
+
 
 interface Props {
   students: User[];

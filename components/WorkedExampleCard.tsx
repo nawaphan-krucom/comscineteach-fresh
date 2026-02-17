@@ -1,5 +1,5 @@
 import React from 'react';
-import Emoji from './primitives/Emoji';
+
 
 interface WorkedExampleProps {
   id?: string;

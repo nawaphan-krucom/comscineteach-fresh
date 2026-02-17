@@ -12,7 +12,6 @@ export function lazyWithRetry<T extends React.ComponentType<any>>(
     const attempt = (): Promise<{ default: T }> =>
       factory().catch((err) => {
         if (--tries > 0) {
-          // eslint-disable-next-line no-console
           console.warn('lazy import failed, retrying...', { triesLeft: tries, err });
           return new Promise((resolve) => setTimeout(resolve, delay)).then(attempt);
         }

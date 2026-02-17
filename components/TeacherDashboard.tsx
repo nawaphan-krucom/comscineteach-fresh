@@ -53,7 +53,6 @@ import {
   ClipboardCheck,
   Plus,
   Edit,
-  AlertTriangle as AlertTriangleIcon,
   ArrowUpDown,
   LayoutGrid,
   List,
@@ -65,7 +64,7 @@ import {
   UserPlus as UserPlusIcon,
 } from "./icons/EmojiIcons";
 import { useData } from "../contexts/DataContext";
-import { t, setLocale, getSavedLocale } from "../utils/i18n";
+import { t } from "../utils/i18n";
 import { useError } from "../contexts/ErrorContext";
 import Fuse from "fuse.js";
 import { lazyWithRetry } from "../utils/lazyWithRetry";
@@ -292,12 +291,7 @@ resetUserPassword,
     | "resources"
   >("students");
 
-  // UI locale for the header language switcher (keeps simple local toggle + localStorage)
-  const [localeState, setLocaleState] = useState(getSavedLocale());
-  const changeLocale = (loc: 'th' | 'en') => {
-    setLocale(loc);
-    setLocaleState(loc);
-  };
+
 
   const [gradingSubmission, setGradingSubmission] = useState<
     (Submission & { studentName?: string }) | null

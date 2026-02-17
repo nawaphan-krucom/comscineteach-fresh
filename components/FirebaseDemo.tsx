@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { db, auth } from '../firebase';
-import { ViewState } from '../types';
 
 const FirebaseDemo: React.FC<{ onBack?: () => void }> = ({ onBack }) => {
   const [email, setEmail] = useState('');

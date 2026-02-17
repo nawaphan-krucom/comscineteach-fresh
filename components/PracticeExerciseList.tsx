@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Emoji from './primitives/Emoji';
 import { useData } from '../contexts/DataContext';
 
 interface Exercise {
@@ -50,7 +49,9 @@ const PracticeExercise: React.FC<{ exercise: Exercise; isTeacher?: boolean; user
   useEffect(() => {
     try {
       localStorage.setItem(doneKey, done ? '1' : '0');
-    } catch {}
+    } catch {
+      // ignore localStorage errors (e.g. private mode)
+    }
   }, [done, doneKey]);
 
   return (

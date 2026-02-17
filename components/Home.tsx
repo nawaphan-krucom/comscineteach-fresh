@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ViewState } from '../types';
-import { BookOpen, MoreHorizontal, Star, CheckCircle, Lock, ChevronRight, Award, Lightbulb, ArrowRight, Trophy, Book, LayoutGrid, Coffee, Monitor, Zap, PenTool, Layers } from './icons/EmojiIcons';
+import { BookOpen, Star, CheckCircle, Lock, ChevronRight, Lightbulb, ArrowRight, Trophy, Book, Coffee, Monitor, Zap, PenTool, Layers } from './icons/EmojiIcons';
 import { GREETINGS, UNIT_ACTIVITIES, UNIT_QUIZZES, UNIT_ASSIGNMENTS } from '../constants';
 import { useData } from '../contexts/DataContext';
 import { Skeleton } from './Skeleton';

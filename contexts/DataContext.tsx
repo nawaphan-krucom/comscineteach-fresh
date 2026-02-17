@@ -1,6 +1,7 @@
 
 
 /* eslint-disable react-refresh/only-export-components */
+/* global process */
 import React, { createContext, useContext, useEffect, ReactNode, useRef, useCallback, useReducer } from 'react';
 import { ViewState } from '../types';
 import type { DataContextType, User, UserProgress, AnnouncementData, QnAData, Submission, LeaderboardEntry, UnitResourceCollection, CourseUnit, QuizData, ActivityData, ShopItem, Project, StudyGroup, Notification, ResetCode, NotebookSubmission, UnitDiscussion, UnitDiscussionReply } from '../types';
@@ -223,7 +224,7 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     try {
       const metaEnv = new Function('return typeof import !== "undefined" && import.meta ? import.meta.env : undefined')();
       usingLiveProject = !!(metaEnv && (metaEnv as any).VITE_SHOW_FIREBASE_PROJECT === 'true');
-    } catch (errInner) {
+    } catch {
       usingLiveProject = (typeof process !== 'undefined' && (process.env as any).VITE_SHOW_FIREBASE_PROJECT === 'true');
     }
 
@@ -244,8 +245,8 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           // cannot shadow an empty Firestore instance.
           if (usingLiveProject && data.users) {
             delete data.users;
-            try { localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data)); } catch (e) { /* ignore */ }
-            try { localStorage.removeItem('currentUser'); } catch (e) { /* ignore */ }
+            try { localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data)); } catch { /* ignore */ }
+            try { localStorage.removeItem('currentUser'); } catch { /* ignore */ }
             console.info('Cleared persisted local users/currentUser because VITE_SHOW_FIREBASE_PROJECT=true');
           }
 
@@ -296,7 +297,7 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }
       } else {
         // Clear any persisted currentUser to avoid stale/mock sessions on live projects
-        try { localStorage.removeItem('currentUser'); } catch (err) { /* ignore */ }
+        try { localStorage.removeItem('currentUser'); } catch { /* ignore */ }
       }
     } catch (e) {
       console.warn('Could not parse persisted currentUser from localStorage', e);
@@ -390,7 +391,7 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     if (!user || !auth.currentUser) return;
 
     // Signal to E2E tests that an authenticated session is present and listeners are being attached.
-    try { if (typeof window !== 'undefined') (window as any).__E2E_AUTH_READY = true; } catch (e) { }
+    try { if (typeof window !== 'undefined') (window as any).__E2E_AUTH_READY = true; } catch { /* ignore in non-browser env */ }
 
     console.log('🔴 REAL-TIME MODE ACTIVATED: Attaching Firestore listeners for continuous sync...');
 
@@ -1030,7 +1031,7 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       await auth.sendPasswordResetEmail(email);
       // Do not reveal whether the email exists — caller should show a generic message
       return true;
-    } catch (err: unknown) {
+    } catch {
       // For security, still return true for any error like user-not-found to avoid leaking account existence
       logError('ส่งคำขอรีเซ็ตรหัสผ่านเสร็จแล้ว (ถ้าบัญชีมีอยู่คุณจะได้รับอีเมล)', 'info');
       return true;
