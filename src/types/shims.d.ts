@@ -7,3 +7,5 @@ declare module 'firebase/compat/*';
 
 // Ensure JSX runtime module is recognized by TS when @types/react is present
 declare module 'react/jsx-runtime';
+
+declare module 'vite/client';
