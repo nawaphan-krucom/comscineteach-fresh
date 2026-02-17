@@ -120,7 +120,7 @@ if ($hasRemote) {
 # Create PR with gh if available
 if (Get-Command gh -ErrorAction SilentlyContinue) {
   Write-Host "Creating PR with gh..."
-  gh pr create --base main --head $branch --title "chore: env guards + point app to computing-science-2569; redact SA; fix local-seed" --body "$(Get-Content PR_BODY.md -Raw)"
+  gh pr create --base main --head $branch --title 'chore: env guards + point app to computing-science-2569; redact SA; fix local-seed' --body-file PR_BODY.md
   if ($LASTEXITCODE -ne 0) { Write-Host "gh pr create failed (you may need to authenticate gh CLI)" -ForegroundColor Yellow }
 } else {
   Write-Host "gh CLI not available — create PR via GitHub UI using branch: $branch" -ForegroundColor Yellow
