@@ -11,7 +11,7 @@ import { db, auth } from '../firebase';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/functions';
-import * as XLSX from 'xlsx';
+import ExcelJS from 'exceljs';
 
 // --- Reducer Setup ---
 type DataState = {
@@ -1210,14 +1210,24 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       data.push(row);
     });
 
-    // Create workbook
-    const wb = XLSX.utils.book_new();
-    const ws = XLSX.utils.aoa_to_sheet([headers, ...data]);
-    XLSX.utils.book_append_sheet(wb, ws, 'คะแนนนักเรียน');
+    // Create workbook using ExcelJS
+    const wb = new ExcelJS.Workbook();
+    const ws = wb.addWorksheet('คะแนนนักเรียน');
+    ws.addRow(headers);
+    for (const r of data) ws.addRow(r);
 
-    // Save file
+    // Save file (browser download)
     const fileName = `คะแนนนักเรียน_${new Date().toISOString().split('T')[0]}.xlsx`;
-    XLSX.writeFile(wb, fileName);
+    const buffer = await wb.xlsx.writeBuffer();
+    const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
 
     logError(`ส่งออกไฟล์ ${fileName} สำเร็จ`, 'success');
   }, [logError]);
