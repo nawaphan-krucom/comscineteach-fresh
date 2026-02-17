@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Minimal global styles (added to satisfy build/runtime requests) */
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: #e9ecef;
+  font-family:
+    "Kanit",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+}
+
+/* Custom app-level styles (kept minimal) */
+
+:root {
+  --brand-primary: #0d9488;
+  --brand-primary-700: #0f766e;
+  --brand-success: #10b981;
+}
+
+/* Helper classes for quick design polish */
+.btn-primary {
+  @apply bg-primary text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all;
+}
+.modal-surface {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+}
