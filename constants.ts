@@ -620,16 +620,16 @@ export const DESIGN_PROJECTS: DesignProject[] = [
 ];
 
 // Option 1 (Current): Transform from users_index.json (richer data with uid, seatNumber, auth flags)
-export const MOCK_USERS: User[] = (STUDENT_EXPORT as any[]).map(s => ({
-  id: String(s.uid || s.studentId || s.docId || s.username || s.id || ''),
-  username: String(s.studentId || s.docId || ''),
-  name: s.displayName || s.name || 'นักเรียน',
-  role: s.role || 'student',
-  avatar: s.avatar || '🧑‍🎓',
-  classLevel: s.classLevel || 'ม.4',
-  room: s.room || '',
-  seatNumber: s.seatNumber || undefined,
-  sessionToken: s.uid // Store Firebase Auth uid as session token
+export const MOCK_USERS: User[] = (Array.isArray(STUDENT_EXPORT) ? STUDENT_EXPORT : []).map((s: any) => ({
+  id: String(s?.uid || s?.studentId || s?.docId || s?.username || s?.id || ''),
+  username: String(s?.studentId || s?.docId || ''),
+  name: s?.displayName || s?.name || 'นักเรียน',
+  role: s?.role || 'student',
+  avatar: s?.avatar || '🧑‍🎓',
+  classLevel: s?.classLevel || 'ม.4',
+  room: s?.room || '',
+  seatNumber: s?.seatNumber || undefined,
+  sessionToken: s?.uid // Store Firebase Auth uid as session token
 }));
 // Ensure test fixture user exists for tests that rely on a known username
 if (!MOCK_USERS.some(u => u.username === '66001')) {
