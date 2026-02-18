@@ -19,4 +19,9 @@ describe('PillTabs', () => {
     secondBtn.props.onClick();
     expect(onChange).toHaveBeenCalledWith(1);
   });
+
+  it('shallow snapshot matches (PillTabs)', () => {
+    const el = PillTabs({ items: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }], active: 'a', onChange: () => {} } as any) as React.ReactElement;
+    expect(el).toMatchSnapshot();
+  });
 });

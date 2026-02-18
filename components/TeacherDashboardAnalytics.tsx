@@ -278,7 +278,7 @@ const AnalyticsTab: React.FC<{
                                         <div className="flex items-center gap-6">
                                             <div className="text-right">
                                                 <p className="text-xs font-bold text-slate-400 uppercase">Score</p>
-                                                <p className="font-black text-blue-600">{totalScore} <span className="text-[10px] text-slate-300">/ {maxTotalScore}</span></p>
+                                                <p className="font-black text-brand-blue">{totalScore} <span className="text-[10px] text-slate-300">/ {maxTotalScore}</span></p>
                                             </div>
                                             <button 
                                                 onClick={() => {
@@ -396,7 +396,7 @@ const AnalyticsTab: React.FC<{
                     </div>
                 </div>
                 <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                     <h3 className="font-bold text-slate-700 mb-6 flex items-center gap-2 font-cute"><PieChart size={20} className="text-emerald-500"/> ความคืบหน้าตามหน่วยเรียน</h3>
+                     <h3 className="font-bold text-slate-700 mb-6 flex items-center gap-2 font-cute"><PieChart size={20} className="text-brand-emerald"/> ความคืบหน้าตามหน่วยเรียน</h3>
                      <div className="space-y-4">
                         {unitCompletionStats.map(unit => (
                             <div key={unit.id}>

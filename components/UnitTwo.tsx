@@ -4,6 +4,7 @@ import { CASE_STUDIES } from '../constants';
 import { BookOpen, Smartphone, Activity, Brain, Settings, CheckCircle2, PlayCircle, BarChart3, Database, PieChart, Search, Layers, Grid, ListOrdered, Calendar, Code, ShieldCheck, Trophy } from './icons/EmojiIcons';
 import SelfAssessment from './SelfAssessment';
 import UnitHero from './UnitHero';
+import PillTabs from './PillTabs';
  
 
 const UnitTwo: React.FC = () => {
@@ -66,28 +67,14 @@ const UnitTwo: React.FC = () => {
         </div>
       </UnitHero>
 
-      {/* Main Tabs - Case Study Selection */}
-      <div className="flex flex-wrap justify-center gap-4 mb-12">
-        {CASE_STUDIES.map(cs => (
-            <button
-                key={cs.id}
-                onClick={() => { setActiveTab(cs.id); setSubTab('ct'); }}
-                className={`flex items-center gap-4 px-8 py-4 rounded-[30px] font-bold transition-all duration-300 border-2 shadow-lg hover:shadow-xl ${
-                    activeTab === cs.id 
-                    ? cs.id === 1
-                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 border-blue-500 text-white ring-4 ring-blue-200 scale-105'
-                      : 'bg-gradient-to-r from-purple-600 to-pink-600 border-purple-500 text-white ring-4 ring-purple-200 scale-105'
-                    : 'bg-white text-slate-600 hover:bg-slate-50 border-slate-200 hover:border-slate-300'
-                }`}
-            >
-                {cs.id === 1 ? <BookOpen size={24} /> : <Smartphone size={24} />}
-                <div className="text-left">
-                    <div className="text-[10px] opacity-70 uppercase font-black tracking-widest">กรณีศึกษาที่ {cs.id}</div>
-                    <div className="text-sm font-bold">{cs.title.split('(')[0]}</div>
-                </div>
-            </button>
-        ))}
-      </div>
+      <PillTabs
+        items={CASE_STUDIES.map(cs => ({ id: cs.id, icon: cs.id === 1 ? <BookOpen size={24}/> : <Smartphone size={24}/>, label: cs.title.split('(')[0] }))}
+        active={activeTab}
+        onChange={(id) => { setActiveTab(Number(id)); setSubTab('ct'); }}
+        outerClassName="flex flex-wrap justify-center gap-4 mb-12"
+        activeClassName="bg-gradient-to-r from-brand-blue to-brand-indigo border-brand-blue text-white ring-4 ring-brand-blue scale-105"
+        inactiveClassName="bg-white text-slate-600 hover:bg-slate-50 border-slate-200 hover:border-slate-300"
+      />
 
       {/* Project Overview Card */}
       <section className="bg-white rounded-[45px] p-8 md:p-16 shadow-[0_15px_40px_rgba(0,0,0,0.08)] border-2 border-slate-100 relative overflow-hidden group hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all duration-500">

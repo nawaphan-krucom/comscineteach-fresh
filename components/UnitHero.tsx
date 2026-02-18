@@ -40,7 +40,7 @@ const UnitHero: React.FC<Props> = ({
 
       {subtitle && <p className={subtitleCls}>{subtitle}</p>}
 
-      {divider && <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mx-auto mt-6 shadow-lg"></div>}
+      {divider && <div className="w-32 h-1.5 bg-gradient-to-r from-brand-blue to-brand-cyan rounded-full mx-auto mt-6 shadow-lg"></div>}
     </section>
   );
 };

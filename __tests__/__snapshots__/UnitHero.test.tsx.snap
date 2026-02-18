@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`UnitHero shallow snapshot matches (UnitHero) 1`] = `
+{
+  "$$typeof": Symbol(react.transitional.element),
+  "key": null,
+  "props": {
+    "children": [
+      undefined,
+      undefined,
+      {
+        "$$typeof": Symbol(react.transitional.element),
+        "key": null,
+        "props": {
+          "children": [
+            "หน่วยการเรียนรู้ที่ ",
+            2,
+            " ",
+            {
+              "$$typeof": Symbol(react.transitional.element),
+              "key": null,
+              "props": {},
+              "ref": null,
+              "type": "br",
+            },
+            {
+              "$$typeof": Symbol(react.transitional.element),
+              "key": null,
+              "props": {
+                "children": "หัวข้อตัวอย่าง",
+              },
+              "ref": null,
+              "type": "span",
+            },
+          ],
+          "className": "text-3xl md:text-4xl font-bold text-slate-800 font-cute",
+        },
+        "ref": null,
+        "type": "h2",
+      },
+      {
+        "$$typeof": Symbol(react.transitional.element),
+        "key": null,
+        "props": {
+          "children": "ย่อหน้า",
+          "className": "text-slate-600",
+        },
+        "ref": null,
+        "type": "p",
+      },
+      {
+        "$$typeof": Symbol(react.transitional.element),
+        "key": null,
+        "props": {
+          "className": "w-32 h-1.5 bg-gradient-to-r from-brand-blue to-brand-cyan rounded-full mx-auto mt-6 shadow-lg",
+        },
+        "ref": null,
+        "type": "div",
+      },
+    ],
+    "className": "text-center space-y-4 mb-8",
+  },
+  "ref": null,
+  "type": "section",
+}
+`;

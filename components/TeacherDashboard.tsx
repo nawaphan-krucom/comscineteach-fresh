@@ -2155,7 +2155,7 @@ resetUserPassword,
                   className={`px-6 py-3 rounded-2xl font-bold flex items-center gap-2 transition-all shrink-0 snap-start relative border-2 whitespace-nowrap
                         ${
                           activeTab === tab.id
-                            ? "bg-indigo-600 text-white border-indigo-600 shadow-lg"
+                            ? "bg-brand-indigo text-white border-brand-indigo shadow-lg"
                             : "bg-white text-slate-500 border-transparent hover:bg-slate-50"
                         }`}
                 >
@@ -2254,7 +2254,7 @@ resetUserPassword,
                   <div className="bg-slate-100 p-1 rounded-xl flex">
                     <button
                       onClick={() => setStudentViewMode("list")}
-                      className={`p-1.5 rounded-lg ${studentViewMode === "list" ? "bg-white shadow-sm text-indigo-600" : "text-slate-400"}`}
+                      className={`p-1.5 rounded-lg ${studentViewMode === "list" ? "bg-white shadow-sm text-brand-indigo" : "text-slate-400"}`}
                     >
                       <List size={18} />
                     </button>

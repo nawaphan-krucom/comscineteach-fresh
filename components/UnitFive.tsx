@@ -41,7 +41,7 @@ const UnitFive: React.FC = () => {
 
       {/* Ethics Section - Highlighted */}
       <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-[30px] p-8 text-white shadow-xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-rose-500/20 rounded-full blur-3xl -mr-10 -mt-10"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-brand-rose/20 rounded-full blur-3xl -mr-10 -mt-10"></div>
           
           <div className="relative z-10">
               <div className="flex justify-between items-start">
@@ -100,7 +100,7 @@ const UnitFive: React.FC = () => {
         active={activeProject}
         onChange={(id) => { setActiveProject(Number(id)); setExpandedStep(0); }}
         outerClassName="flex flex-wrap justify-center gap-4 mb-10"
-        activeClassName="bg-gradient-to-r from-rose-500 to-pink-500 text-white border-transparent shadow-lg scale-105"
+        activeClassName="bg-gradient-to-r from-brand-rose to-pink-500 text-white border-transparent shadow-lg scale-105"
         inactiveClassName="bg-white text-slate-600 border-slate-200 hover:border-rose-300 hover:bg-rose-50"
       />
 
@@ -117,17 +117,17 @@ const UnitFive: React.FC = () => {
           <div className="p-4 md:p-8 bg-slate-50 border-t border-slate-100">
             <div className="max-w-4xl mx-auto">
               <h4 className="text-2xl font-bold text-slate-800 mb-8 flex items-center gap-2 font-cute">
-                <List size={28} className="text-rose-500"/> 6 ขั้นตอนการดำเนินงาน
+                <List size={28} className="text-brand-rose"/> 6 ขั้นตอนการดำเนินงาน
               </h4>
               <div className="space-y-4">
                 {activeProjectData.projectSteps.map((step, idx) => (
-                  <div key={idx} className={`bg-white border-2 rounded-2xl transition-all duration-300 overflow-hidden ${expandedStep === idx ? 'border-rose-500 shadow-md' : 'border-slate-200 hover:border-rose-300'}`}>
+                  <div key={idx} className={`bg-white border-2 rounded-2xl transition-all duration-300 overflow-hidden ${expandedStep === idx ? 'border-brand-rose shadow-md' : 'border-slate-200 hover:border-rose-300'}`}>
                     <div 
                       className={`p-5 flex items-center justify-between cursor-pointer ${expandedStep === idx ? 'bg-rose-50/50' : ''}`}
                       onClick={() => toggleStep(idx)}
                     >
                        <div className="flex items-center gap-4">
-                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold shadow-sm transition-colors ${expandedStep === idx ? 'bg-rose-500' : 'bg-slate-400'}`}>
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold shadow-sm transition-colors ${expandedStep === idx ? 'bg-brand-rose' : 'bg-slate-400'}`}>
                           {step.stepNumber}
                         </div>
                         <div>
@@ -230,7 +230,7 @@ const UnitFive: React.FC = () => {
                           <div className="flex flex-col">
                               <div className="bg-gradient-to-br from-slate-100 to-white border-2 border-slate-200 rounded-2xl p-6 shadow-sm flex-1 flex flex-col relative print:border-black">
                                   <div className="absolute top-4 right-4 text-slate-300"><Rocket size={48} className="opacity-20"/></div>
-                                  <div className="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-1">Project Concept Card</div>
+                                  <div className="text-xs font-bold text-brand-indigo uppercase tracking-widest mb-1">Project Concept Card</div>
                                   <h2 className="text-2xl font-bold text-slate-800 mb-6 font-cute break-words">{canvasData.name || 'ชื่อโครงงาน...'}</h2>
                                   
                                   <div className="space-y-4 flex-1">
@@ -239,7 +239,7 @@ const UnitFive: React.FC = () => {
                                           <p className="text-sm text-slate-700">{canvasData.problem || '-'}</p>
                                       </div>
                                       <div className="bg-blue-50 p-3 rounded-xl border border-blue-100">
-                                          <div className="text-[10px] font-bold text-blue-500 uppercase">Target User</div>
+                                          <div className="text-[10px] font-bold text-brand-blue uppercase">Target User</div>
                                           <p className="text-sm text-slate-700">{canvasData.target || '-'}</p>
                                       </div>
                                       <div className="bg-green-50 p-3 rounded-xl border border-green-100">
@@ -266,7 +266,7 @@ const UnitFive: React.FC = () => {
       </section>
 
       {/* Future of Design and Technology */}
-      <section className="bg-gradient-to-br from-cyan-600 to-blue-700 p-8 rounded-[30px] text-white shadow-xl relative overflow-hidden">
+      <section className="bg-gradient-to-br from-brand-cyan to-brand-blue p-8 rounded-[30px] text-white shadow-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
         
         <div className="relative z-10">

@@ -110,7 +110,7 @@ const PropertyCarousel: React.FC = () => {
 
     return (
         <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm relative group overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-indigo-500"></div>
+<div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-brand-indigo"></div>
             
             <div className="flex justify-between items-center mb-6">
                 <h4 className="text-2xl font-bold text-slate-800">สมบัติของวัสดุ (Material Properties)</h4>
@@ -122,7 +122,7 @@ const PropertyCarousel: React.FC = () => {
 
             <div key={index} className="animate-fade-in grid md:grid-cols-2 gap-8 items-center">
                 <div className="bg-blue-50 p-8 rounded-[30px] flex flex-col justify-center items-center text-center h-full min-h-[200px] border border-blue-100">
-                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-blue-600 shadow-md mb-4 text-3xl font-bold">
+                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-brand-blue shadow-md mb-4 text-3xl font-bold">
                         {index + 1}
                     </div>
                     <h5 className="text-2xl font-bold text-blue-800 mb-1">{current.type}</h5>
@@ -148,7 +148,7 @@ const PropertyCarousel: React.FC = () => {
             
             <div className="flex justify-center mt-8">
                 {MATERIAL_PROPERTIES.map((_, i) => (
-                    <button key={i} onClick={() => setIndex(i)} className={`h-2 mx-1 rounded-full transition-all ${i === index ? 'w-8 bg-blue-500' : 'w-2 bg-slate-200'}`}></button>
+                    <button key={i} onClick={() => setIndex(i)} className={`h-2 mx-1 rounded-full transition-all ${i === index ? 'w-8 bg-brand-blue' : 'w-2 bg-slate-200'}`}></button>
                 ))}
             </div>
         </div>
@@ -168,7 +168,7 @@ const MechanismCarousel: React.FC = () => {
                 <div className="absolute top-0 right-0 w-40 h-40 bg-orange-50 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
                 
                 <div key={index} className="animate-fade-in relative z-10 text-center max-w-2xl mx-auto">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 font-bold text-sm mb-6">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-100 text-brand-orange font-bold text-sm mb-6">
                         <Settings size={16} className="animate-spin-slow"/> กลไกที่ {index + 1} จาก {MECHANISM_TYPES.length}
                     </div>
                     <h4 className="text-3xl font-black text-slate-800 mb-4">{current.name}</h4>
@@ -187,8 +187,8 @@ const MechanismCarousel: React.FC = () => {
                 </div>
 
                 {/* Navigation */}
-                <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white shadow-md rounded-full text-slate-400 hover:text-orange-500 hover:scale-110 transition-all z-20 border border-slate-100"><ChevronLeft size={24}/></button>
-                <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white shadow-md rounded-full text-slate-400 hover:text-orange-500 hover:scale-110 transition-all z-20 border border-slate-100"><ChevronRight size={24}/></button>
+                    <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white shadow-md rounded-full text-slate-400 hover:text-brand-orange hover:scale-110 transition-all z-20 border border-slate-100"><ChevronLeft size={24}/></button>
+                <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white shadow-md rounded-full text-slate-400 hover:text-brand-orange hover:scale-110 transition-all z-20 border border-slate-100"><ChevronRight size={24}/></button>
             </div>
             
             <div className="flex justify-center mt-6 gap-2">
@@ -196,7 +196,7 @@ const MechanismCarousel: React.FC = () => {
                     <button 
                         key={i} 
                         onClick={() => setIndex(i)}
-                        className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${i === index ? 'bg-orange-500 text-white border-orange-500 shadow-md transform scale-105' : 'bg-white text-slate-500 border-slate-200 hover:bg-slate-50'}`}
+                        className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${i === index ? 'bg-brand-orange text-white border-brand-orange shadow-md transform scale-105' : 'bg-white text-slate-500 border-slate-200 hover:bg-slate-50'}`}
                     >
                         {m.name.split(' ')[0]}
                     </button>
@@ -306,7 +306,7 @@ const ToolCard: React.FC<{ category: typeof TOOL_CATEGORIES[0] }> = ({ category 
             </div>
             <div className="p-6 relative min-h-[180px] flex flex-col justify-center items-center">
                 <div key={subIndex} className="animate-fade-in text-center w-full">
-                    <div className="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm">
+                    <div className="w-16 h-16 bg-indigo-50 text-brand-indigo rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm">
                         <Wrench size={32}/>
                     </div>
                     <h6 className="text-lg font-bold text-slate-800 mb-1">{category.tools[subIndex].name}</h6>
@@ -384,7 +384,7 @@ const UnitFour: React.FC = () => {
             {/* Quick Link to Circuit Sim */}
             <div 
                 onClick={() => { setActiveTopic(2); setMaterialSubTab(3); }}
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6 rounded-2xl shadow-lg cursor-pointer hover:scale-[1.01] transition-transform flex items-center justify-between group"
+                className="bg-gradient-to-r from-brand-blue to-brand-indigo text-white p-6 rounded-2xl shadow-lg cursor-pointer hover:scale-[1.01] transition-transform flex items-center justify-between group"
             >
                 <div className="flex items-center gap-4">
                     <div className="bg-white/20 p-3 rounded-full">
@@ -401,7 +401,7 @@ const UnitFour: React.FC = () => {
             {/* Comparison Table */}
             <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
                <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
-                 <GitCompare size={28} className="text-blue-500"/> วิทยาศาสตร์ vs วิศวกรรมศาสตร์
+                 <GitCompare size={28} className="text-brand-blue"/> วิทยาศาสตร์ vs วิศวกรรมศาสตร์
                </h3>
                <div className="overflow-x-auto">
                  <table className="w-full text-left border-collapse">
@@ -442,7 +442,7 @@ const UnitFour: React.FC = () => {
                     className={`p-5 flex items-center justify-between cursor-pointer ${expandedStep === index ? 'bg-orange-50/50' : ''}`}
                   >
                     <div className="flex items-center gap-4">
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold shadow-sm transition-colors ${expandedStep === index ? 'bg-orange-500' : 'bg-slate-400'}`}>
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold shadow-sm transition-colors ${expandedStep === index ? 'bg-brand-orange' : 'bg-slate-400'}`}>
                         {step.step}
                       </div>
                       <div>

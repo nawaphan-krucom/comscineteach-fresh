@@ -17,4 +17,9 @@ describe('UnitHero', () => {
     expect(childrenStr).toContain('หัวข้อทดสอบ');
     expect(childrenStr).toContain('คำอธิบายสั้น');
   });
+
+  it('shallow snapshot matches (UnitHero)', () => {
+    const el = UnitHero({ unitNumber: 2, title: <span>หัวข้อตัวอย่าง</span>, subtitle: 'ย่อหน้า', divider: true } as any) as React.ReactElement;
+    expect(el).toMatchSnapshot();
+  });
 });
