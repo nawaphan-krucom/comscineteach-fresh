@@ -215,10 +215,12 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
 
         <div className="relative z-10 p-8 sm:p-10 flex-1 flex flex-col justify-center overflow-y-auto custom-scrollbar">
           <div className="text-center mb-8">
-            <div className="w-28 h-28 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-2xl text-white ring-1 ring-white/20">
-              <Book size={44} />
+            <div className="w-32 h-32 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-400 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-[0_30px_60px_rgba(99,102,241,0.14)] text-white ring-1 ring-white/20">
+              <div className="w-20 h-20 bg-white/8 rounded-2xl flex items-center justify-center shadow-inner">
+                <Book size={48} />
+              </div>
             </div>
-            <h1 className="text-4xl font-extrabold text-slate-900 font-cute tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 font-cute tracking-tight">
               {viewState === "login"
                 ? "เข้าสู่ระบบ"
                 : viewState === "register"
@@ -247,14 +249,14 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                 </label>
                 <div className="relative">
                   <UserIcon
-                    className="absolute left-3 top-3 text-slate-400"
-                    size={18}
+                    className="absolute left-3 top-3 text-indigo-600 bg-indigo-50 w-8 h-8 rounded-full flex items-center justify-center p-1.5 shadow-sm"
+                    size={16}
                   />
                   <input
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    className="w-full pl-10 pr-4 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all font-medium text-slate-800"
+                    className="w-full pl-14 pr-4 py-4 rounded-2xl bg-white border border-slate-100 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 transition-all font-medium text-slate-800"
                     placeholder="เช่น 66001 หรือ teacher"
                     disabled={isLoading}
                   />
@@ -267,24 +269,24 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                 </label>
                 <div className="relative">
                   <Lock
-                    className="absolute left-3 top-3 text-slate-400"
-                    size={18}
+                    className="absolute left-3 top-3 text-amber-500 bg-amber-50 w-8 h-8 rounded-full flex items-center justify-center p-1.5 shadow-sm"
+                    size={16}
                   />
                   <input
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-10 pr-12 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all font-medium text-slate-800"
+                    className="w-full pl-14 pr-14 py-4 rounded-2xl bg-white border border-slate-100 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 transition-all font-medium text-slate-800"
                     placeholder="รหัสผ่าน"
                     disabled={isLoading}
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-3 text-slate-400 hover:text-indigo-500 transition-colors"
+                    className="absolute right-3 top-3 text-slate-400 bg-white border border-slate-100 w-8 h-8 rounded-full flex items-center justify-center shadow-sm hover:text-indigo-500 transition-colors"
                     tabIndex={-1}
                   >
-                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                 </div>
                 <div className="text-right mt-1">
@@ -310,14 +312,10 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full h-14 bg-gradient-to-b from-slate-900 to-slate-800 text-white rounded-2xl font-extrabold shadow-[0_18px_40px_rgba(2,6,23,0.35)] hover:scale-[1.01] transition-transform transform flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full h-16 bg-slate-900 text-white rounded-2xl font-extrabold shadow-2xl hover:scale-[1.01] transition-transform transform flex items-center justify-center gap-4 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                {isLoading ? (
-                  <Loader2 className="animate-spin" size={20} />
-                ) : (
-                  <span className="text-lg">🔒</span>
-                )}
-                {isLoading ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ"}
+                <span className="inline-flex items-center justify-center w-10 h-10 bg-slate-800/60 rounded-lg shadow-inner mr-1">🔒</span>
+                <span className="text-lg">{isLoading ? 'กำลังเข้าสู่ระบบ...' : 'เข้าสู่ระบบ'}</span>
               </button> 
             </form>
           )}
@@ -674,7 +672,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                     setViewState("register");
                     setError("");
                   }}
-                  className="text-sm font-bold text-indigo-500 hover:text-indigo-700 flex items-center justify-center gap-1 mx-auto mb-3"
+                  className="text-sm font-bold text-indigo-600 hover:text-indigo-700 underline flex items-center justify-center gap-1 mx-auto mb-3"
                   disabled={isLoading}
                 >
                   นักเรียนใหม่? ลงทะเบียนที่นี่ <ArrowRight size={14} />
