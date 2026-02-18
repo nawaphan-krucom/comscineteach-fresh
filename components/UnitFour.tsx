@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { ENGINEERING_STEPS, ENGINEERING_DEFINITION, ENGINEERING_COMPARISON, MATERIAL_PROPERTIES, MATERIAL_TYPES, MECHANISM_TYPES, ELECTRONICS_INFO, TOOL_CATEGORIES } from '../constants';
 import { Wrench, Hammer, Zap, Box, CheckCircle, MonitorPlay, Settings, CheckCircle2, BookOpen, GitCompare, ChevronDown, Lightbulb, ChevronLeft, ChevronRight, Power, MousePointerClick } from './icons/EmojiIcons';
+import SelfAssessment from './SelfAssessment';
  
 import type { MaterialType } from '../types';
 
@@ -663,42 +664,15 @@ const UnitFour: React.FC = () => {
               </div>
 
         {/* Self-Assessment Section for UnitFour */}
-        <section className="bg-gradient-to-r from-slate-800 to-slate-900 p-8 rounded-[30px] text-white shadow-xl">
-          <h3 className="text-2xl sm:text-3xl font-bold font-cute mb-8 text-center">📋 ประเมินความเข้าใจเกี่ยวกับการออกแบบวิศวกรรม</h3>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-green-400 transition-colors">
-              <div className="text-green-400 font-bold text-lg mb-3">✓ พื้นฐาน</div>
-              <ul className="space-y-2 text-sm opacity-90">
-                <li>• บอกสมบัติของวัสดุได้</li>
-                <li>• ระบุเครื่องมือช่างพื้นฐาน</li>
-                <li>• อธิบายกลไกอย่างง่าย</li>
-              </ul>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-blue-400 transition-colors">
-              <div className="text-blue-400 font-bold text-lg mb-3">✓ ระดับกลาง</div>
-              <ul className="space-y-2 text-sm opacity-90">
-                <li>• เลือกวัสดุที่เหมาะสม</li>
-                <li>• สร้างต้นแบบอย่างง่าย</li>
-                <li>• ทำแบบร่าง (sketch) ได้</li>
-              </ul>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-orange-400 transition-colors">
-              <div className="text-orange-400 font-bold text-lg mb-3">⭐ ระดับสูง</div>
-              <ul className="space-y-2 text-sm opacity-90">
-                <li>• ปฏิบัติตามขั้นตอน 6 ขั้น</li>
-                <li>• ทำสิ่งประดิษฐ์จริงได้</li>
-                <li>• ทดสอบและปรับปรุง</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-8 bg-white/5 p-6 rounded-2xl border border-white/10 text-center">
-            <p className="text-sm opacity-80 mb-3">🔧 <span className="font-bold">ความท้าทาย:</span> ออกแบบและสร้างของใช้ที่แก้ปัญหาในชีวิตประจำวัน</p>
-          </div>
-        </section>
+        <SelfAssessment
+          title={"📋 ประเมินความเข้าใจเกี่ยวกับการออกแบบวิศวกรรม"}
+          levels={[
+            { heading: '✓ พื้นฐาน', colorClass: 'text-green-600', items: ['บอกสมบัติของวัสดุได้', 'ระบุเครื่องมือช่างพื้นฐาน', 'อธิบายกลไกอย่างง่าย'] },
+            { heading: '✓ ระดับกลาง', colorClass: 'text-blue-600', items: ['เลือกวัสดุที่เหมาะสม', 'สร้างต้นแบบอย่างง่าย', 'ทำแบบร่าง (sketch) ได้'] },
+            { heading: '⭐ ระดับสูง', colorClass: 'text-orange-600', items: ['ปฏิบัติตามขั้นตอน 6 ขั้น', 'ทำสิ่งประดิษฐ์จริงได้', 'ทดสอบและปรับปรุง'] }
+          ]}
+          note={<p className="text-sm text-slate-600 mb-3">🔧 <span className="font-bold">ความท้าทาย:</span> ออกแบบและสร้างของใช้ที่แก้ปัญหาในชีวิตประจำวัน</p>}
+        />
 
         {/* Inline exam panel for Unit Four */}
         {/* exam removed */}

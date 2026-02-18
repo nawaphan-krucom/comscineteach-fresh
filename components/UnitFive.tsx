@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DESIGN_PROJECTS, INTELLECTUAL_PROPERTY_CONCEPTS, CREATIVE_COMMONS_LICENSES } from '../constants';
 import { Heart, Lightbulb, CheckSquare, List, Star, Key, CheckCircle2, ChevronDown, ShieldCheck, Scale, Globe, Rocket, Download, Edit3 } from './icons/EmojiIcons';
+import SelfAssessment from './SelfAssessment';
  
 
 const UnitFive: React.FC = () => {
@@ -373,44 +374,14 @@ const UnitFive: React.FC = () => {
       </section>
 
       {/* Self-Assessment Section */}
-      <section className="bg-gradient-to-r from-slate-800 to-slate-900 p-8 rounded-[30px] text-white shadow-xl">
-        <h3 className="text-2xl sm:text-3xl font-bold font-cute mb-8 text-center">📝 ประเมินความเข้าใจ</h3>
-        
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-green-400 transition-colors">
-            <div className="text-green-400 font-bold text-lg mb-3 flex items-center gap-2">
-              <CheckCircle2 size={24}/> ข้อมูลพื้นฐาน
-            </div>
-            <ul className="space-y-2 text-sm opacity-90">
-              <li>✓ ทำความเข้าใจขั้นตอน 6 ขั้นของการออกแบบวิศวกรรม</li>
-              <li>✓ บอกได้ว่าทรัพย์สินทางปัญญามีกี่ประเภท</li>
-              <li>✓ รู้ความแตกต่างระหว่าง Copyright กับ Patent</li>
-            </ul>
-          </div>
-
-          <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-blue-400 transition-colors">
-            <div className="text-blue-400 font-bold text-lg mb-3 flex items-center gap-2">
-              <CheckSquare size={24}/> ระดับกลาง
-            </div>
-            <ul className="space-y-2 text-sm opacity-90">
-              <li>✓ วิเคราะห์กรณีศึกษาและหาจุดที่สำคัญได้</li>
-              <li>✓ เลือกสัญญาอนุญาต Creative Commons ได้อย่างถูกต้อง</li>
-              <li>✓ จัดทำแผนโครงงานได้ตามกระบวนการ</li>
-            </ul>
-          </div>
-
-          <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-purple-400 transition-colors">
-            <div className="text-purple-400 font-bold text-lg mb-3 flex items-center gap-2">
-              <Star size={24}/> ระดับสูง
-            </div>
-            <ul className="space-y-2 text-sm opacity-90">
-              <li>✓ สร้างโครงงานที่ยึดหลักจริยธรรมและเคารพ IP</li>
-              <li>✓ นำเสนอผลงานได้อย่างมีประสิทธิภาพ</li>
-              <li>✓ คิดถึงผลกระทบต่อสังคมและสิ่งแวดล้อม</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <SelfAssessment
+        title={"📝 ประเมินความเข้าใจ"}
+        levels={[
+          { heading: 'ข้อมูลพื้นฐาน', colorClass: 'text-green-600', prefix: <CheckCircle2 size={24}/>, items: ['ทำความเข้าใจขั้นตอน 6 ขั้นของการออกแบบวิศวกรรม','บอกได้ว่าทรัพย์สินทางปัญญามีกี่ประเภท','รู้ความแตกต่างระหว่าง Copyright กับ Patent'] },
+          { heading: 'ระดับกลาง', colorClass: 'text-blue-600', prefix: <CheckSquare size={24}/>, items: ['วิเคราะห์กรณีศึกษาและหาจุดที่สำคัญได้','เลือกสัญญาอนุญาต Creative Commons ได้อย่างถูกต้อง','จัดทำแผนโครงงานได้ตามกระบวนการ'] },
+          { heading: 'ระดับสูง', colorClass: 'text-purple-600', prefix: <Star size={24}/>, items: ['สร้างโครงงานที่ยึดหลักจริยธรรมและเคารพ IP','นำเสนอผลงานได้อย่างมีประสิทธิภาพ','คิดถึงผลกระทบต่อสังคมและสิ่งแวดล้อม'] }
+        ]}
+      />
 
       {/* Reflection & Next Steps */}
       <section className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-[30px] border-2 border-amber-200 shadow-lg">

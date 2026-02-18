@@ -2,6 +2,7 @@
 import React, { useState, useMemo } from 'react';
 import { TECH_RELATIONSHIPS, SYSTEM_EXAMPLES, COMPLEX_SYSTEM_LIST, TECH_IMPACTS, TECH_CHANGE_CAUSES, SYSTEM_CONCEPTS, TECH_EVOLUTION } from '../constants';
 import { GitMerge, Box, Car, History, Activity, Cpu, Zap, ArrowRight, ArrowDown, RotateCcw, CheckCircle2, AlertTriangle, Settings, Globe, RefreshCw, Users, TrendingUp, Palette, Leaf, Microscope, Link, Layers, Wind, Droplet, Puzzle, Check, Trophy, BrainCircuit, Sparkles, Smartphone } from './icons/EmojiIcons';
+import SelfAssessment from './SelfAssessment';
  
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -705,42 +706,16 @@ const UnitThree: React.FC = () => {
         )}
 
         {/* Self-Assessment Section for UnitThree */}
-        <section className="bg-gradient-to-r from-emerald-600 to-teal-700 p-8 rounded-[30px] text-white shadow-xl">
-          <h3 className="text-2xl sm:text-3xl font-bold font-cute mb-8 text-center">⚙️ ประเมินความเข้าใจระบบทางเทคโนโลยี</h3>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-green-300 transition-colors">
-              <div className="text-green-300 font-bold text-lg mb-3">✓ พื้นฐาน</div>
-              <ul className="space-y-2 text-sm opacity-90">
-                <li>• บอก Input/Process/Output</li>
-                <li>• ยกตัวอย่างระบบง่าย ๆ</li>
-                <li>• อธิบาย Feedback ได้</li>
-              </ul>
-            </div>
+        <SelfAssessment
+          title={"⚙️ ประเมินความเข้าใจระบบทางเทคโนโลยี"}
+          levels={[
+            { heading: '✓ พื้นฐาน', colorClass: 'text-green-600', items: ['บอก Input/Process/Output', 'ยกตัวอย่างระบบง่าย ๆ', 'อธิบาย Feedback ได้'] },
+            { heading: '✓ ระดับกลาง', colorClass: 'text-cyan-600', items: ['วิเคราะห์ระบบจริง', 'เข้าใจระบบซับซ้อน', 'อธิบายผลกระทบ Tech'] },
+            { heading: '⭐ ระดับสูง', colorClass: 'text-teal-600', items: ['ออกแบบระบบใหม่', 'วิเคราะห์สาเหตุการเปลี่ยน', 'เสนอวิธีแก้ปัญหา Tech'] }
+          ]}
+          note={<p className="text-sm text-slate-600 mb-3">🔎 <span className="font-bold">ความท้าทาย:</span> วิเคราะห์ระบบใกล้ตัวและเสนอการปรับปรุง</p>}
+        />
 
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-cyan-400 transition-colors">
-              <div className="text-cyan-300 font-bold text-lg mb-3">✓ ระดับกลาง</div>
-              <ul className="space-y-2 text-sm opacity-90">
-                <li>• วิเคราะห์ระบบจริง</li>
-                <li>• เข้าใจระบบซับซ้อน</li>
-                <li>• อธิบายผลกระทบ Tech</li>
-              </ul>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-teal-300 transition-colors">
-              <div className="text-teal-300 font-bold text-lg mb-3">⭐ ระดับสูง</div>
-              <ul className="space-y-2 text-sm opacity-90">
-                <li>• ออกแบบระบบใหม่</li>
-                <li>• วิเคราะห์สาเหตุการเปลี่ยน</li>
-                <li>• เสนอวิธีแก้ปัญหา Tech</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-8 bg-white/5 p-6 rounded-2xl border border-white/10 text-center">
-            <p className="text-sm opacity-80 mb-3">🔬 <span className="font-bold">ความท้าทาย:</span> วิเคราะห์ระบบเทคโนโลยีที่ใช้ในชีวิตประจำวัน</p>
-          </div>
-        </section>
 
         
 

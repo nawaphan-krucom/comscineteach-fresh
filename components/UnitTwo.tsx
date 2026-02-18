@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { CASE_STUDIES } from '../constants';
 import { BookOpen, Smartphone, Activity, Brain, Settings, CheckCircle2, PlayCircle, BarChart3, Database, PieChart, Search, Layers, Grid, ListOrdered, Calendar, Code, ShieldCheck, Trophy } from './icons/EmojiIcons';
- 
+import SelfAssessment from './SelfAssessment';
 
  
 
@@ -444,42 +444,15 @@ const UnitTwo: React.FC = () => {
         )}
 
         {/* Self-Assessment Section */}
-        <section className="bg-gradient-to-r from-slate-800 to-slate-900 p-8 rounded-[30px] text-white shadow-xl mt-8">
-          <h3 className="text-2xl sm:text-3xl font-bold font-cute mb-8 text-center">📋 ประเมินความเข้าใจเกี่ยวกับ SDLC & CT</h3>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-blue-400 transition-colors">
-              <div className="text-blue-400 font-bold text-lg mb-3">✓ พื้นฐาน</div>
-              <ul className="space-y-2 text-sm opacity-90">
-                <li>• บอกความหมาย SDLC ได้</li>
-                <li>• ระบุ 5 ขั้นตอนของ SDLC ได้</li>
-                <li>• อธิบายแนวคิด CT ได้อย่างง่าย</li>
-              </ul>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-purple-400 transition-colors">
-              <div className="text-purple-400 font-bold text-lg mb-3">✓ ระดับกลาง</div>
-              <ul className="space-y-2 text-sm opacity-90">
-                <li>• วิเคราะห์กรณีศึกษาด้วย SDLC</li>
-                <li>• ประยุกต์ CT กับปัญหาจริง</li>
-                <li>• เลือก Data Science methods ได้</li>
-              </ul>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-pink-400 transition-colors">
-              <div className="text-pink-400 font-bold text-lg mb-3">⭐ ระดับสูง</div>
-              <ul className="space-y-2 text-sm opacity-90">
-                <li>• ออกแบบ AI model ได้</li>
-                <li>• ใช้ Data Science แก้ปัญหา</li>
-                <li>• เชื่อมโยง CT-SDLC-AI</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-8 bg-white/5 p-6 rounded-2xl border border-white/10 text-center">
-            <p className="text-sm opacity-80 mb-3">🎯 <span className="font-bold">เป้าหมายถัดไป:</span> ลองสร้างโครงงานที่ประยุกต์ใช้ CT + SDLC + Data Analysis เข้าด้วยกัน</p>
-          </div>
-        </section>
+        <SelfAssessment
+          title={"📋 ประเมินความเข้าใจเกี่ยวกับ SDLC & CT"}
+          levels={[
+            { heading: '✓ พื้นฐาน', colorClass: 'text-blue-600', items: ['บอกความหมาย SDLC ได้', 'ระบุ 5 ขั้นตอนของ SDLC ได้', 'อธิบายแนวคิด CT ได้อย่างง่าย'] },
+            { heading: '✓ ระดับกลาง', colorClass: 'text-purple-600', items: ['วิเคราะห์กรณีศึกษาด้วย SDLC', 'ประยุกต์ CT กับปัญหาจริง', 'เลือก Data Science methods ได้'] },
+            { heading: '⭐ ระดับสูง', colorClass: 'text-pink-600', items: ['ออกแบบ AI model ได้', 'ใช้ Data Science แก้ปัญหา', 'เชื่อมโยง CT-SDLC-AI'] }
+          ]}
+          note={<p className="text-sm text-slate-600 mb-3">🎯 <span className="font-bold">เป้าหมายถัดไป:</span> ลองสร้างโครงงานที่ประยุกต์ใช้ CT + SDLC + Data Analysis เข้าด้วยกัน</p>}
+        />
 
         {/* Exercises section removed per request */}
 

@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { CT_SKILLS, SDLC_STEPS, REPORT_STRUCTURE } from '../constants';
 // FIX: Added ChevronRight to lucide-react imports.
 import { Scissors, Grid, Layers, ListOrdered, Settings, FileText, Brain, Bike, ArrowDown, BookOpen, Play, RefreshCw, CheckSquare, ChevronDown, ChevronUp, Search, GitCommit, MousePointer2, Trophy, CheckCircle, XCircle, ChevronLeft, ChevronRight, Code } from './icons/EmojiIcons';
-
+import SelfAssessment from './SelfAssessment';
  
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -417,42 +417,15 @@ const UnitOne: React.FC = () => {
               </div>
 
         {/* Self-Assessment Section for UnitOne */}
-        <section className="bg-gradient-to-r from-indigo-600 to-purple-700 p-8 rounded-[30px] text-white shadow-xl">
-          <h3 className="text-2xl sm:text-3xl font-bold font-cute mb-8 text-center">🧠 ประเมินความเข้าใจแนวคิดเชิงคำนวณ</h3>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-cyan-400 transition-colors">
-              <div className="text-cyan-300 font-bold text-lg mb-3">✓ พื้นฐาน</div>
-              <ul className="space-y-2 text-sm opacity-90">
-                <li>• บอกความหมาย Decomposition</li>
-                <li>• ยกตัวอย่าง Pattern Recognition</li>
-                <li>• อธิบาย Abstraction ได้</li>
-              </ul>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-blue-400 transition-colors">
-              <div className="text-blue-300 font-bold text-lg mb-3">✓ ระดับกลาง</div>
-              <ul className="space-y-2 text-sm opacity-90">
-                <li>• แยกส่วนปัญหาจริง</li>
-                <li>• หารูปแบบของข้อมูล</li>
-                <li>• เขียน Algorithm เล็กน้อย</li>
-              </ul>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-pink-400 transition-colors">
-              <div className="text-pink-300 font-bold text-lg mb-3">⭐ ระดับสูง</div>
-              <ul className="space-y-2 text-sm opacity-90">
-                <li>• ใช้ 4 เสาหลัก CT ได้ลึก</li>
-                <li>• ออกแบบอัลกอริทึมซับซ้อน</li>
-                <li>• สร้างโปรแกรมง่าย ๆ</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-8 bg-white/5 p-6 rounded-2xl border border-white/10 text-center">
-            <p className="text-sm opacity-80 mb-3">💡 <span className="font-bold">ความท้าทาย:</span> ใช้แนวคิดเชิงคำนวณแก้ปัญหากรรมการที่ซับซ้อนจริง</p>
-          </div>
-        </section>
+        <SelfAssessment
+          title={"🧠 ประเมินความเข้าใจแนวคิดเชิงคำนวณ"}
+          levels={[
+            { heading: '✓ พื้นฐาน', colorClass: 'text-cyan-600', items: ['บอกความหมาย Decomposition', 'ยกตัวอย่าง Pattern Recognition', 'อธิบาย Abstraction ได้'] },
+            { heading: '✓ ระดับกลาง', colorClass: 'text-blue-600', items: ['แยกส่วนปัญหาจริง', 'หารูปแบบของข้อมูล', 'เขียน Algorithm เล็กน้อย'] },
+            { heading: '⭐ ระดับสูง', colorClass: 'text-pink-600', items: ['ใช้ 4 เสาหลัก CT ได้ลึก', 'ออกแบบอัลกอริทึมซับซ้อน', 'สร้างโปรแกรมง่าย ๆ'] }
+          ]}
+          note={<p className="text-sm text-slate-600 mb-3">💡 <span className="font-bold">ความท้าทาย:</span> ใช้แนวคิดเชิงคำนวณแก้ปัญหากรรมการที่ซับซ้อนจริง</p>}
+        />
 
         {/* Exercises section removed per request */}
 

@@ -769,10 +769,7 @@ const GradebookView: React.FC<GradebookViewProps> = ({ students, allProgress }) 
           <span className="text-sm font-semibold text-slate-600">
             หน้า <span className="text-indigo-600 font-bold">{currentPage}</span> / <span className="text-slate-800 font-bold">{totalPages}</span>
           </span>
-          <span className="text-sm text-slate-500">•</span>
-          <span className="text-sm text-slate-500">
-            นักเรียน <span className="font-bold text-slate-700">{paginatedStudents.length}</span> / <span className="font-bold text-slate-700">{filteredStudents.length}</span> คน
-          </span>
+        
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
