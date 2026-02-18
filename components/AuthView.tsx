@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import type { User } from "../types";
 import {
   Book,
-  LogIn,
   UserPlus,
   ArrowRight,
   User as UserIcon,
