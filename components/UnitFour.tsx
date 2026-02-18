@@ -4,6 +4,7 @@ import { ENGINEERING_STEPS, ENGINEERING_DEFINITION, ENGINEERING_COMPARISON, MATE
 import { Wrench, Hammer, Zap, Box, CheckCircle, MonitorPlay, Settings, CheckCircle2, BookOpen, GitCompare, ChevronDown, Lightbulb, ChevronLeft, ChevronRight, Power, MousePointerClick } from './icons/EmojiIcons';
 import SelfAssessment from './SelfAssessment';
 import UnitHero from './UnitHero';
+import PillTabs from './PillTabs';
  
 import type { MaterialType } from '../types';
 
@@ -349,21 +350,14 @@ const UnitFour: React.FC = () => {
         subtitle="Engineering Design Process: กระบวนการแก้ปัญหาอย่างเป็นขั้นตอน"
       />
 
-      <div className="flex justify-center bg-slate-100 p-1.5 rounded-xl w-full md:w-fit mx-auto mb-10 overflow-x-auto scrollbar-hide">
-        {topics.map((topic, index) => (
-          <button
-            key={index}
-            onClick={() => setActiveTopic(index)}
-            className={`flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-bold text-sm transition-all duration-300 whitespace-nowrap
-              ${activeTopic === index 
-                ? 'bg-white text-orange-600 shadow-md' 
-                : 'text-slate-500 hover:text-slate-700'}`}
-          >
-            {topic.icon}
-            <span>{topic.title}</span>
-          </button>
-        ))}
-      </div>
+      <PillTabs
+        items={topics.map((t, i) => ({ id: i, icon: t.icon, label: t.title }))}
+        active={activeTopic}
+        onChange={(id) => setActiveTopic(Number(id))}
+        outerClassName="flex justify-center bg-slate-100 p-1.5 rounded-xl w-full md:w-fit mx-auto mb-10 overflow-x-auto scrollbar-hide"
+        activeClassName="bg-white text-orange-600 shadow-md"
+        inactiveClassName="text-slate-500 hover:text-slate-700"
+      />
 
       <div className="min-h-[500px]">
         {/* Topic 1: Definition & Comparison */}

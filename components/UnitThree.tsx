@@ -4,6 +4,7 @@ import { TECH_RELATIONSHIPS, SYSTEM_EXAMPLES, COMPLEX_SYSTEM_LIST, TECH_IMPACTS,
 import { GitMerge, Box, Car, History, Activity, Cpu, Zap, ArrowRight, ArrowDown, RotateCcw, CheckCircle2, AlertTriangle, Settings, Globe, RefreshCw, Users, TrendingUp, Palette, Leaf, Microscope, Link, Layers, Wind, Droplet, Puzzle, Check, Trophy, BrainCircuit, Sparkles, Smartphone } from './icons/EmojiIcons';
 import SelfAssessment from './SelfAssessment';
 import UnitHero from './UnitHero';
+import PillTabs from './PillTabs';
  
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -125,21 +126,14 @@ const UnitThree: React.FC = () => {
       />
 
       {/* Topic Navigation */}
-      <div className="flex justify-center bg-gradient-to-r from-emerald-50 to-teal-50 p-2 rounded-[20px] w-full md:w-fit mx-auto mb-12 overflow-x-auto scrollbar-hide border-2 border-emerald-100 shadow-lg">
-        {topics.map((topic, index) => (
-          <button
-            key={index}
-            onClick={() => setActiveTopic(index)}
-            className={`flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-[16px] font-bold text-sm transition-all duration-300 whitespace-nowrap
-              ${activeTopic === index 
-                ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg scale-105' 
-                : 'text-slate-600 hover:text-emerald-600 hover:bg-white/70'}`}
-          >
-            {topic.icon}
-            <span>{topic.title}</span>
-          </button>
-        ))}
-      </div>
+      <PillTabs
+        items={topics.map((t, i) => ({ id: i, icon: t.icon, label: t.title }))}
+        active={activeTopic}
+        onChange={(id) => setActiveTopic(Number(id))}
+        outerClassName="flex justify-center bg-gradient-to-r from-emerald-50 to-teal-50 p-2 rounded-[20px] w-full md:w-fit mx-auto mb-12 overflow-x-auto scrollbar-hide border-2 border-emerald-100 shadow-lg"
+        activeClassName="bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg scale-105"
+        inactiveClassName="text-slate-600 hover:text-emerald-600 hover:bg-white/70"
+      />
 
       <div className="min-h-[500px]">
         

@@ -4,6 +4,7 @@ import { CT_SKILLS, SDLC_STEPS, REPORT_STRUCTURE } from '../constants';
 import { Scissors, Grid, Layers, ListOrdered, Settings, FileText, Brain, Bike, ArrowDown, BookOpen, Play, RefreshCw, CheckSquare, ChevronDown, ChevronUp, Search, GitCommit, MousePointer2, Trophy, CheckCircle, XCircle, ChevronLeft, ChevronRight, Code } from './icons/EmojiIcons';
 import SelfAssessment from './SelfAssessment';
 import UnitHero from './UnitHero';
+import PillTabs from './PillTabs';
  
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -120,25 +121,18 @@ const UnitOne: React.FC = () => {
     <div className="space-y-8 animate-fade-in">
       <UnitHero
         unitNumber={1}
-        title={<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">แนวคิดเชิงคำนวณ</span>}
+        title={<span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-indigo">แนวคิดเชิงคำนวณ</span>}
         subtitle="พื้นฐานการคิดแก้ปัญหาและการพัฒนาโครงงานอย่างเป็นระบบ"
       />
 
-      <div className="flex justify-center bg-slate-100 p-1.5 rounded-xl w-full md:w-fit mx-auto mb-10">
-        {topics.map((topic, index) => (
-          <button
-            key={index}
-            onClick={() => setActiveTopic(index)}
-            className={`flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-bold text-sm transition-all duration-300
-              ${activeTopic === index 
-                ? 'bg-white text-blue-600 shadow-md' 
-                : 'text-slate-500 hover:text-slate-700'}`}
-          >
-            {topic.icon}
-            <span>{topic.title}</span>
-          </button>
-        ))}
-      </div>
+      <PillTabs
+        items={topics.map((t, i) => ({ id: i, icon: t.icon, label: t.title }))}
+        active={activeTopic}
+        onChange={(id) => setActiveTopic(Number(id))}
+        outerClassName="flex justify-center bg-slate-100 p-1.5 rounded-xl w-full md:w-fit mx-auto mb-10"
+        activeClassName="bg-white text-blue-600 shadow-md"
+        inactiveClassName="text-slate-500 hover:text-slate-700"
+      />
 
       <div className="min-h-[500px]">
         {activeTopic === 0 && (

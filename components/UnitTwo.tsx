@@ -57,7 +57,7 @@ const UnitTwo: React.FC = () => {
         badge={<div className="inline-block bg-white/20 text-white px-6 py-2.5 rounded-full text-sm font-black uppercase tracking-widest border border-white/30 mb-6 backdrop-blur-md">Unit 2: Application Blend</div>}
         title={<span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-cyan-100 font-black text-5xl sm:text-6xl leading-tight">การประยุกต์แนวคิดเชิงคำนวณเพื่อพัฒนาโครงงาน</span>}
         subtitle="นำทฤษฎี CT มาวิเคราะห์ปัญหาจริง พร้อมเรียนรู้ขั้นตอนการพัฒนาโครงงานแบบมืออาชีพ (SDLC) และกระบวนการวิทยาการข้อมูลเบื้องต้น"
-        outerClassName="bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-700 rounded-[45px] p-8 md:p-20 text-white shadow-[0_25px_60px_rgba(0,0,0,0.15)] relative overflow-hidden"
+        outerClassName="bg-gradient-to-br from-brand-blue via-brand-indigo to-brand-purple rounded-[45px] p-8 md:p-20 text-white shadow-[0_25px_60px_rgba(0,0,0,0.15)] relative overflow-hidden"
       >
         <div className="absolute inset-0 opacity-15">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -mr-48 -mt-48 blur-3xl"></div>

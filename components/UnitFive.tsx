@@ -3,6 +3,7 @@ import { DESIGN_PROJECTS, INTELLECTUAL_PROPERTY_CONCEPTS, CREATIVE_COMMONS_LICEN
 import { Heart, Lightbulb, CheckSquare, List, Star, Key, CheckCircle2, ChevronDown, ShieldCheck, Scale, Globe, Rocket, Download, Edit3 } from './icons/EmojiIcons';
 import SelfAssessment from './SelfAssessment';
 import UnitHero from './UnitHero';
+import PillTabs from './PillTabs';
  
 
 const UnitFive: React.FC = () => {
@@ -31,7 +32,7 @@ const UnitFive: React.FC = () => {
     <div className="space-y-8 animate-fade-in">
       <UnitHero
         unitNumber={5}
-        title={<span className="text-rose-500">ผลงานการออกแบบและเทคโนโลยี</span>}
+        title={<span className="text-brand-rose">ผลงานการออกแบบและเทคโนโลยี</span>}
         subtitle="เรียนรู้จากกรณีศึกษา และการเคารพสิทธิทางปัญญา (Intellectual Property)"
       />
 
@@ -94,24 +95,14 @@ const UnitFive: React.FC = () => {
       </div>
 
       {/* Project Tabs */}
-      <div className="flex flex-wrap justify-center gap-4 mb-10">
-        {DESIGN_PROJECTS.map((project, index) => (
-          <button
-            key={project.id}
-            onClick={() => { setActiveProject(index); setExpandedStep(0); }}
-            className={`flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all duration-300 border-2
-              ${activeProject === index 
-                ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white border-transparent shadow-lg scale-105' 
-                : 'bg-white text-slate-600 border-slate-200 hover:border-rose-300 hover:bg-rose-50'}`}
-          >
-            {project.id === 1 ? <Lightbulb size={24} /> : <Heart size={24} />}
-            <div className="text-left">
-              <div className="text-xs opacity-70 font-normal uppercase tracking-wider">Case Study {project.id}</div>
-              <div className="text-sm">{project.title.split('(')[0]}</div>
-            </div>
-          </button>
-        ))}
-      </div>
+      <PillTabs
+        items={DESIGN_PROJECTS.map((p, i) => ({ id: i, icon: p.id === 1 ? <Lightbulb size={24} /> : <Heart size={24} />, label: p.title.split('(')[0] }))}
+        active={activeProject}
+        onChange={(id) => { setActiveProject(Number(id)); setExpandedStep(0); }}
+        outerClassName="flex flex-wrap justify-center gap-4 mb-10"
+        activeClassName="bg-gradient-to-r from-rose-500 to-pink-500 text-white border-transparent shadow-lg scale-105"
+        inactiveClassName="bg-white text-slate-600 border-slate-200 hover:border-rose-300 hover:bg-rose-50"
+      />
 
       <div className="min-h-[600px]">
         <div key={activeProjectData.id} className="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 animate-fade-in">
