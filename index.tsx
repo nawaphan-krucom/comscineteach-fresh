@@ -9,7 +9,9 @@ import { MusicProvider } from './contexts/MusicContext';
 import { DataProvider } from './contexts/DataContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import ThemePlayground from './components/ThemePlayground';
+import UIPrototype from './components/UIPrototype';
 import './styles/theme-prototype.css';
+import './styles/ui-prototype.css';
 // macOS Big Sur / Monterey look
 import './styles/macos-theme.css';
 
@@ -29,7 +31,9 @@ root.render(
         <ThemeProvider>
           <DataProvider>
             <MusicProvider>
-              {new URLSearchParams(window.location.search).get('themeDemo') === '1' ? (
+              {new URLSearchParams(window.location.search).get('uiPrototype') === '1' ? (
+                <UIPrototype />
+              ) : new URLSearchParams(window.location.search).get('themeDemo') === '1' ? (
                 <ThemePlayground />
               ) : (
                 <App />
