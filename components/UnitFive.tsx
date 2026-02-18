@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { DESIGN_PROJECTS, INTELLECTUAL_PROPERTY_CONCEPTS, CREATIVE_COMMONS_LICENSES } from '../constants';
 import { Heart, Lightbulb, CheckSquare, List, Star, Key, CheckCircle2, ChevronDown, ShieldCheck, Scale, Globe, Rocket, Download, Edit3 } from './icons/EmojiIcons';
 import SelfAssessment from './SelfAssessment';
+import UnitHero from './UnitHero';
  
 
 const UnitFive: React.FC = () => {
@@ -28,42 +29,14 @@ const UnitFive: React.FC = () => {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <section className="text-center space-y-4 mb-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-800 font-cute">
-          หน่วยการเรียนรู้ที่ 5 <br/>
-          <span className="text-rose-500">ผลงานการออกแบบและเทคโนโลยี</span>
-        </h2>
-        <p className="text-slate-600">เรียนรู้จากกรณีศึกษา และการเคารพสิทธิทางปัญญา (Intellectual Property)</p>
-
-      </section>
+      <UnitHero
+        unitNumber={5}
+        title={<span className="text-rose-500">ผลงานการออกแบบและเทคโนโลยี</span>}
+        subtitle="เรียนรู้จากกรณีศึกษา และการเคารพสิทธิทางปัญญา (Intellectual Property)"
+      />
 
       {/* Inline exam panel for Unit Five */}
       {/* exam removed */}
-
-      {/* Exercises & Quiz */}
-      <section className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-        <h3 className="text-xl font-bold mb-3">แบบฝึกหัด — จริยธรรม & การออกแบบโครงงาน</h3>
-        <div className="text-sm text-slate-700 space-y-3">
-          <ol className="list-decimal pl-5 space-y-2">
-            <li>ออกแบบโครงงานสั้น ๆ (ชื่อ, ปัญหา, กลุ่มเป้าหมาย, แนวทางแก้)</li>
-            <li>ระบุความเสี่ยงด้านสิทธิทางปัญญาที่อาจเกิดขึ้นและวิธีป้องกัน</li>
-            <li>เลือกสัญญาอนุญาต Creative Commons ที่เหมาะสมและอธิบาย</li>
-          </ol>
-          <div>
-            <button onClick={() => setShowExercisesUnit5(prev => !prev)} className="text-sm font-bold text-blue-600">แสดง/ซ่อน เฉลย & แนวทาง</button>
-            {showExercisesUnit5 && (
-              <div className="mt-3 bg-slate-50 p-4 rounded-lg border border-slate-100 text-sm text-slate-700">
-                <p className="font-bold">เฉลย (ตัวอย่าง)</p>
-                <ol className="list-decimal pl-5 mt-2 space-y-1">
-                  <li>โครงงาน: แอปช่วยจัดการคิวโรงอาหาร — ปัญหา: คิวยาว — Solution: ระบบรับออเดอร์ล่วงหน้า</li>
-                  <li>ความเสี่ยง IP: ใช้รูป/เนื้อหาที่มีลิขสิทธิ์ — ป้องกันโดยใช้ภาพ CC-BY หรือสร้างเอง</li>
-                  <li>สัญญา: CC-BY-SA เหมาะเมื่ออยากให้ผู้อื่นนำไปแก้ไขต่อได้ (พร้อมรับเครดิต)</li>
-                </ol>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
 
       {/* Ethics Section - Highlighted */}
       <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-[30px] p-8 text-white shadow-xl relative overflow-hidden">

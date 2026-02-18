@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { CASE_STUDIES } from '../constants';
 import { BookOpen, Smartphone, Activity, Brain, Settings, CheckCircle2, PlayCircle, BarChart3, Database, PieChart, Search, Layers, Grid, ListOrdered, Calendar, Code, ShieldCheck, Trophy } from './icons/EmojiIcons';
 import SelfAssessment from './SelfAssessment';
-
+import UnitHero from './UnitHero';
  
 
 const UnitTwo: React.FC = () => {
@@ -52,25 +52,19 @@ const UnitTwo: React.FC = () => {
 
   return (
     <div className="space-y-20 pb-16 animate-fade-in">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-700 rounded-[45px] p-8 md:p-20 text-white shadow-[0_25px_60px_rgba(0,0,0,0.15)] relative overflow-hidden">
+      <UnitHero
+        unitNumber={2}
+        badge={<div className="inline-block bg-white/20 text-white px-6 py-2.5 rounded-full text-sm font-black uppercase tracking-widest border border-white/30 mb-6 backdrop-blur-md">Unit 2: Application Blend</div>}
+        title={<span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-cyan-100 font-black text-5xl sm:text-6xl leading-tight">การประยุกต์แนวคิดเชิงคำนวณเพื่อพัฒนาโครงงาน</span>}
+        subtitle="นำทฤษฎี CT มาวิเคราะห์ปัญหาจริง พร้อมเรียนรู้ขั้นตอนการพัฒนาโครงงานแบบมืออาชีพ (SDLC) และกระบวนการวิทยาการข้อมูลเบื้องต้น"
+        outerClassName="bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-700 rounded-[45px] p-8 md:p-20 text-white shadow-[0_25px_60px_rgba(0,0,0,0.15)] relative overflow-hidden"
+      >
         <div className="absolute inset-0 opacity-15">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -mr-48 -mt-48 blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-72 h-72 bg-white rounded-full -ml-36 -mb-36 blur-3xl"></div>
           <div className="absolute top-1/2 left-1/3 w-80 h-80 bg-blue-300 rounded-full opacity-20 blur-3xl"></div>
         </div>
-        <div className="relative z-10">
-          <div className="inline-block bg-white/20 text-white px-6 py-2.5 rounded-full text-sm font-black uppercase tracking-widest border border-white/30 mb-6 backdrop-blur-md">
-             Unit 2: Application Blend
-          </div>
-          <h2 className="text-5xl sm:text-6xl font-black mb-6 leading-tight font-cute bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-cyan-100">
-            การประยุกต์แนวคิดเชิงคำนวณเพื่อพัฒนาโครงงาน
-          </h2>
-          <p className="text-lg sm:text-xl text-blue-50 font-medium leading-relaxed max-w-3xl">
-            นำทฤษฎี CT มาวิเคราะห์ปัญหาจริง พร้อมเรียนรู้ขั้นตอนการพัฒนาโครงงานแบบมืออาชีพ (SDLC) และกระบวนการวิทยาการข้อมูลเบื้องต้น
-          </p>
-        </div>
-      </section>
+      </UnitHero>
 
       {/* Main Tabs - Case Study Selection */}
       <div className="flex flex-wrap justify-center gap-4 mb-12">

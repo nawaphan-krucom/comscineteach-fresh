@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { ENGINEERING_STEPS, ENGINEERING_DEFINITION, ENGINEERING_COMPARISON, MATERIAL_PROPERTIES, MATERIAL_TYPES, MECHANISM_TYPES, ELECTRONICS_INFO, TOOL_CATEGORIES } from '../constants';
 import { Wrench, Hammer, Zap, Box, CheckCircle, MonitorPlay, Settings, CheckCircle2, BookOpen, GitCompare, ChevronDown, Lightbulb, ChevronLeft, ChevronRight, Power, MousePointerClick } from './icons/EmojiIcons';
 import SelfAssessment from './SelfAssessment';
+import UnitHero from './UnitHero';
  
 import type { MaterialType } from '../types';
 
@@ -342,13 +343,11 @@ const UnitFour: React.FC = () => {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <section className="text-center space-y-4 mb-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-800 font-cute">
-          หน่วยการเรียนรู้ที่ 4 <br/>
-          <span className="text-orange-500">กระบวนการออกแบบเชิงวิศวกรรม</span>
-        </h2>
-        <p className="text-slate-600">Engineering Design Process: กระบวนการแก้ปัญหาอย่างเป็นขั้นตอน</p>
-      </section>
+      <UnitHero
+        unitNumber={4}
+        title={<span className="text-orange-500">กระบวนการออกแบบเชิงวิศวกรรม</span>}
+        subtitle="Engineering Design Process: กระบวนการแก้ปัญหาอย่างเป็นขั้นตอน"
+      />
 
       <div className="flex justify-center bg-slate-100 p-1.5 rounded-xl w-full md:w-fit mx-auto mb-10 overflow-x-auto scrollbar-hide">
         {topics.map((topic, index) => (
@@ -676,31 +675,6 @@ const UnitFour: React.FC = () => {
 
         {/* Inline exam panel for Unit Four */}
         {/* exam removed */}
-
-        {/* Exercises + Answers */}
-        <section className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm mt-8">
-          <h3 className="text-xl font-bold mb-3">แบบฝึกหัด — การออกแบบเชิงวิศวกรรม</h3>
-          <div className="text-sm text-slate-700 space-y-3">
-            <ol className="list-decimal pl-5 space-y-2">
-              <li>เลือกวัสดุที่เหมาะสมสำหรับชิ้นงานเล็ก ๆ และอธิบายเหตุผล</li>
-              <li>ออกแบบการทดสอบเล็กน้อยเพื่อประเมินความแข็งแรงของชิ้นงาน</li>
-              <li>ร่างแผนการ SDLC สั้น ๆ สำหรับโครงงานที่คิดขึ้น</li>
-            </ol>
-            <div>
-              <button onClick={() => setShowExercisesUnit4(prev => !prev)} className="text-sm font-bold text-blue-600">แสดง/ซ่อน เฉลย</button>
-              {showExercisesUnit4 && (
-                <div className="mt-3 bg-slate-50 p-4 rounded-lg border border-slate-100 text-sm text-slate-700">
-                  <p className="font-bold">เฉลย (ตัวอย่าง)</p>
-                  <ol className="list-decimal pl-5 mt-2 space-y-1">
-                    <li>วัสดุ: พลาสติกแข็งสำหรับชิ้นที่น้ำหนักเบา, เหล็กสำหรับรับแรงสูง</li>
-                    <li>การทดสอบ: ทดสอบรับน้ำหนักค่อย ๆ เพิ่มเพื่อตรวจจุดวางรับแรง</li>
-                    <li>SDLC: Plan → Design → Prototype → Test → Revise → Deliver</li>
-                  </ol>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
 
       </div>
     </div>

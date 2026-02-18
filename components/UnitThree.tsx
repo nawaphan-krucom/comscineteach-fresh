@@ -3,6 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { TECH_RELATIONSHIPS, SYSTEM_EXAMPLES, COMPLEX_SYSTEM_LIST, TECH_IMPACTS, TECH_CHANGE_CAUSES, SYSTEM_CONCEPTS, TECH_EVOLUTION } from '../constants';
 import { GitMerge, Box, Car, History, Activity, Cpu, Zap, ArrowRight, ArrowDown, RotateCcw, CheckCircle2, AlertTriangle, Settings, Globe, RefreshCw, Users, TrendingUp, Palette, Leaf, Microscope, Link, Layers, Wind, Droplet, Puzzle, Check, Trophy, BrainCircuit, Sparkles, Smartphone } from './icons/EmojiIcons';
 import SelfAssessment from './SelfAssessment';
+import UnitHero from './UnitHero';
  
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -116,14 +117,12 @@ const UnitThree: React.FC = () => {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <section className="text-center space-y-6 mb-12">
-        <h2 className="text-4xl sm:text-5xl font-black text-slate-900 font-cute">
-          หน่วยการเรียนรู้ที่ 3 <br/>
-          <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">ระบบทางเทคโนโลยี</span>
-        </h2>
-        <p className="text-base sm:text-lg font-semibold text-slate-700 max-w-2xl mx-auto">เข้าใจองค์ประกอบ การทำงาน และผลกระทบของเทคโนโลยีรอบตัว</p>
-        <div className="w-32 h-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full mx-auto mt-6 shadow-lg"></div>
-      </section>
+      <UnitHero
+        unitNumber={3}
+        title={<span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">ระบบทางเทคโนโลยี</span>}
+        subtitle={<span className="text-base sm:text-lg font-semibold text-slate-700 max-w-2xl mx-auto">เข้าใจองค์ประกอบ การทำงาน และผลกระทบของเทคโนโลยีรอบตัว</span>}
+        divider
+      />
 
       {/* Topic Navigation */}
       <div className="flex justify-center bg-gradient-to-r from-emerald-50 to-teal-50 p-2 rounded-[20px] w-full md:w-fit mx-auto mb-12 overflow-x-auto scrollbar-hide border-2 border-emerald-100 shadow-lg">
@@ -716,33 +715,6 @@ const UnitThree: React.FC = () => {
           note={<p className="text-sm text-slate-600 mb-3">🔎 <span className="font-bold">ความท้าทาย:</span> วิเคราะห์ระบบใกล้ตัวและเสนอการปรับปรุง</p>}
         />
 
-
-        
-
-        {/* Exercises & Mini-Quiz */}
-        <section className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm mt-8">
-          <h3 className="text-xl font-bold mb-3">แบบฝึกหัด — ระบบทางเทคโนโลยี</h3>
-          <div className="text-sm text-slate-700 space-y-3">
-            <ol className="list-decimal pl-5 space-y-2">
-              <li>เลือกระบบใดระบบหนึ่งในบทเรียน และอธิบาย Input/Process/Output</li>
-              <li>ออกแบบ Feedback ที่เหมาะสมกับระบบที่เลือก</li>
-              <li>อธิบายผลกระทบเชิงสังคมของระบบนั้น 2 ข้อ</li>
-            </ol>
-            <div>
-              <button onClick={() => setShowExercisesUnit3(prev => !prev)} className="text-sm font-bold text-blue-600">แสดง/ซ่อน เฉลย & คำแนะนำ</button>
-              {showExercisesUnit3 && (
-                <div className="mt-3 bg-slate-50 p-4 rounded-lg border border-slate-100 text-sm text-slate-700">
-                  <p className="font-bold">เฉลย (ตัวอย่าง)</p>
-                  <ol className="list-decimal pl-5 mt-2 space-y-1">
-                    <li>Input/Process/Output ของระบบพัดลม: พลังงานไฟฟ้า → มอเตอร์หมุน → ลม</li>
-                    <li>Feedback: เซนเซอร์วัดอุณหภูมิที่ปรับความเร็วพัดลมอัตโนมัติ</li>
-                    <li>ผลกระทบ: บวก = สะดวก, ลบ = พลังงานเพิ่ม/ผลกระทบสิ่งแวดล้อม</li>
-                  </ol>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
 
       </div>
     </div>

@@ -3,6 +3,7 @@ import { CT_SKILLS, SDLC_STEPS, REPORT_STRUCTURE } from '../constants';
 // FIX: Added ChevronRight to lucide-react imports.
 import { Scissors, Grid, Layers, ListOrdered, Settings, FileText, Brain, Bike, ArrowDown, BookOpen, Play, RefreshCw, CheckSquare, ChevronDown, ChevronUp, Search, GitCommit, MousePointer2, Trophy, CheckCircle, XCircle, ChevronLeft, ChevronRight, Code } from './icons/EmojiIcons';
 import SelfAssessment from './SelfAssessment';
+import UnitHero from './UnitHero';
  
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -117,13 +118,11 @@ const UnitOne: React.FC = () => {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <section className="text-center space-y-4 mb-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-800 font-cute">
-          หน่วยการเรียนรู้ที่ 1 <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">แนวคิดเชิงคำนวณ</span>
-        </h2>
-        <p className="text-gray-500 font-medium">พื้นฐานการคิดแก้ปัญหาและการพัฒนาโครงงานอย่างเป็นระบบ</p>
-      </section>
+      <UnitHero
+        unitNumber={1}
+        title={<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">แนวคิดเชิงคำนวณ</span>}
+        subtitle="พื้นฐานการคิดแก้ปัญหาและการพัฒนาโครงงานอย่างเป็นระบบ"
+      />
 
       <div className="flex justify-center bg-slate-100 p-1.5 rounded-xl w-full md:w-fit mx-auto mb-10">
         {topics.map((topic, index) => (
