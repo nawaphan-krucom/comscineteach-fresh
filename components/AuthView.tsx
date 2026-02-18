@@ -197,8 +197,8 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center aurora-bg p-4">
-      <div className="mac-window w-full max-w-lg bg-white/90 backdrop-blur-xl rounded-[30px] shadow-2xl animate-fade-in relative overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="min-h-screen flex items-center justify-center aurora-bg py-12 px-4">
+      <div className="mac-window w-full max-w-md md:max-w-lg mx-auto bg-white/90 backdrop-blur-xl rounded-[30px] shadow-2xl animate-fade-in relative overflow-hidden flex flex-col max-h-[90vh]">
         {/* Status Indicator */}
         <div
           className={`absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-bold flex items-center gap-1.5 shadow-sm border ${isOnline ? "bg-green-100 text-green-700 border-green-200" : "bg-slate-100 text-slate-500 border-slate-200"}`}
@@ -211,12 +211,15 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
         <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-200 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
         <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-pink-200 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
 
-        <div className="relative z-10 p-8 flex-1 overflow-y-auto custom-scrollbar">
-          <div className="text-center mb-6">
-            <div className="w-20 h-20 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg text-white">
-              <Book size={40} />
+        {/* soft bottom glow */}
+        <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-pink-50/90 via-white/60 to-transparent opacity-95 pointer-events-none z-0 rounded-b-[30px]"></div>
+
+        <div className="relative z-10 p-8 sm:p-10 flex-1 flex flex-col justify-center overflow-y-auto custom-scrollbar">
+          <div className="text-center mb-8">
+            <div className="w-28 h-28 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-2xl text-white ring-1 ring-white/20">
+              <Book size={44} />
             </div>
-            <h1 className="text-3xl font-bold text-slate-800 font-cute">
+            <h1 className="text-4xl font-extrabold text-slate-900 font-cute tracking-tight">
               {viewState === "login"
                 ? "เข้าสู่ระบบ"
                 : viewState === "register"
@@ -225,7 +228,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                     ? "กู้คืนรหัสผ่าน"
                     : "ตั้งรหัสผ่านใหม่"}
             </h1>
-            <p className="text-slate-500 text-sm">
+            <p className="text-slate-500 text-sm mt-1">
               {viewState === "login"
                 ? "ยินดีต้อนรับสู่ห้องเรียนคอมพิวเตอร์"
                 : viewState === "register"
@@ -238,7 +241,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
 
           {viewState === "login" && (
             /* LOGIN FORM */
-            <form onSubmit={handleLogin} className="space-y-4">
+            <form onSubmit={handleLogin} className="space-y-6">
               <div>
                 <label className="text-xs font-bold text-slate-500 ml-1 mb-1 block">
                   ชื่อผู้ใช้ / รหัสประจำตัวนักเรียน
@@ -252,7 +255,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all font-medium text-slate-800"
+                    className="w-full pl-10 pr-4 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all font-medium text-slate-800"
                     placeholder="เช่น 66001 หรือ teacher"
                     disabled={isLoading}
                   />
@@ -272,7 +275,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-10 pr-12 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all font-medium text-slate-800"
+                    className="w-full pl-10 pr-12 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all font-medium text-slate-800"
                     placeholder="รหัสผ่าน"
                     disabled={isLoading}
                   />
@@ -308,21 +311,21 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-4 bg-slate-800 text-white rounded-xl font-bold shadow-lg hover:bg-slate-700 hover:scale-[1.02] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full h-14 bg-gradient-to-b from-slate-900 to-slate-800 text-white rounded-2xl font-extrabold shadow-[0_18px_40px_rgba(2,6,23,0.35)] hover:scale-[1.01] transition-transform transform flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isLoading ? (
                   <Loader2 className="animate-spin" size={20} />
                 ) : (
-                  <LogIn size={20} />
+                  <span className="text-lg">🔒</span>
                 )}
                 {isLoading ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ"}
-              </button>
+              </button> 
             </form>
           )}
 
           {viewState === "register" && (
             /* REGISTER FORM */
-            <form onSubmit={handleRegister} className="space-y-4">
+            <form onSubmit={handleRegister} className="space-y-6">
               {/* Student ID */}
               <div>
                 <label className="text-xs font-bold text-slate-500 ml-1 mb-1 block">
@@ -337,7 +340,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                     type="text"
                     value={studentId}
                     onChange={(e) => setStudentId(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all font-medium text-slate-800"
+                    className="w-full pl-10 pr-4 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all font-medium text-slate-800"
                     placeholder="เช่น 66101"
                     disabled={isLoading}
                   />
@@ -353,7 +356,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                   <select
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full px-3 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium appearance-none text-slate-800"
+                    className="w-full px-3 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium appearance-none text-slate-800"
                     disabled={isLoading}
                   >
                     <option value="เด็กชาย">เด็กชาย</option>
@@ -370,7 +373,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                     type="text"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
+                    className="w-full px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
                     placeholder="สมชาย"
                     disabled={isLoading}
                   />
@@ -384,7 +387,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                   type="text"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
+                  className="w-full px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
                   placeholder="ใจดี"
                   disabled={isLoading}
                 />
@@ -400,7 +403,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                     type="text"
                     value={classLevel}
                     onChange={(e) => setClassLevel(e.target.value)}
-                    className="w-full px-3 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
+                    className="w-full px-3 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
                     placeholder="ม.4"
                     disabled={isLoading}
                   />
@@ -413,7 +416,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                     type="text"
                     value={room}
                     onChange={(e) => setRoom(e.target.value)}
-                    className="w-full px-3 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
+                    className="w-full px-3 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
                     placeholder="1"
                     disabled={isLoading}
                   />
@@ -426,7 +429,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                     type="text"
                     value={seatNumber}
                     onChange={(e) => setSeatNumber(e.target.value)}
-                    className="w-full px-3 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
+                    className="w-full px-3 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
                     placeholder="15"
                     disabled={isLoading}
                   />
@@ -443,7 +446,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                     type={showRegPassword ? "text" : "password"}
                     value={regPassword}
                     onChange={(e) => setRegPassword(e.target.value)}
-                    className="w-full px-4 pr-12 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
+                    className="w-full px-4 pr-12 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
                     placeholder="รหัสผ่าน"
                     disabled={isLoading}
                   />
@@ -465,7 +468,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                   type={showRegPassword ? "text" : "password"}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
+                  className="w-full px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
                   placeholder="ยืนยันรหัสผ่าน"
                   disabled={isLoading}
                 />
@@ -499,7 +502,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                 e.preventDefault();
                 setResetCode(resetCode.toUpperCase());
               }}
-              className="space-y-4"
+              className="space-y-6"
             >
               <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-xs text-blue-800 mb-4">
                 ครูของคุณได้ส่งรหัสรีเซ็ต (6 หลัก) ไปให้แล้ว กรุณากรอกรหัสนั้น
@@ -517,7 +520,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                     type="text"
                     value={resetCode}
                     onChange={(e) => setResetCode(e.target.value.toUpperCase())}
-                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all font-medium text-slate-800 tracking-widest"
+                    className="w-full pl-10 pr-4 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all font-medium text-slate-800 tracking-widest"
                     placeholder="เช่น ABC123"
                     disabled={isLoading}
                     maxLength={6}
@@ -560,7 +563,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
 
           {viewState === "forgot" && resetCode && (
             /* RESET PASSWORD FORM */
-            <form onSubmit={handleResetWithCode} className="space-y-4">
+            <form onSubmit={handleResetWithCode} className="space-y-6">
               <div className="bg-green-50 border border-green-200 rounded-xl p-4 text-xs text-green-800 mb-4">
                 รหัสรีเซ็ตของคุณถูกต้อง ตอนนี้กรุณาตั้งรหัสผ่านใหม่
               </div>
@@ -578,7 +581,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                     type={showResetPassword ? "text" : "password"}
                     value={newResetPassword}
                     onChange={(e) => setNewResetPassword(e.target.value)}
-                    className="w-full pl-10 pr-12 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-4 focus:ring-primary/30 transition-all font-medium text-slate-800"
+                    className="w-full pl-10 pr-12 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-primary/30 transition-all font-medium text-slate-800"
                     placeholder="รหัสผ่านใหม่"
                     disabled={isLoading}
                   />
@@ -610,7 +613,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                     type={showResetPassword ? "text" : "password"}
                     value={confirmResetPassword}
                     onChange={(e) => setConfirmResetPassword(e.target.value)}
-                    className="w-full pl-10 pr-12 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-4 focus:ring-primary/30 transition-all font-medium text-slate-800"
+                    className="w-full px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 ring-1 ring-slate-100 shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-medium text-slate-800"
                     placeholder="ยืนยันรหัสผ่าน"
                     disabled={isLoading}
                   />
@@ -664,7 +667,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
             </form>
           )}
 
-          <div className="mt-6 pt-6 border-t border-slate-100 text-center pb-2">
+          <div className="mt-10 pt-8 border-t border-slate-100 text-center pb-8">
             {viewState === "login" && (
               <>
                 <button
