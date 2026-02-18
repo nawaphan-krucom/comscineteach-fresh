@@ -214,6 +214,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
         <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-pink-50/90 via-white/60 to-transparent opacity-95 pointer-events-none z-0 rounded-b-[30px]"></div>
 
         <div className="relative z-10 p-8 sm:p-10 flex-1 flex flex-col justify-center overflow-y-auto custom-scrollbar">
+          <div className="w-full max-w-md mx-auto">
           <div className="text-center mb-8">
             <div className="w-32 h-32 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-400 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-[0_30px_60px_rgba(99,102,241,0.14)] text-white ring-1 ring-white/20">
               <div className="w-20 h-20 bg-white/8 rounded-2xl flex items-center justify-center shadow-inner">
@@ -702,6 +703,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
                 มีบัญชีอยู่แล้ว? เข้าสู่ระบบ <ArrowRight size={14} />
               </button>
             )}
+          </div>
           </div>
         </div>
       </div>
