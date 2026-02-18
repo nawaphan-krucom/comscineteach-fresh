@@ -22,7 +22,7 @@ if (!rootElement) {
 // We only silence this exact message during local development so real warnings/errors still appear.
 if (import.meta.env.DEV) {
   const BLOCKED_SUBSTRING = 'Download the React DevTools for a better development experience';
-  const wrap = (orig: typeof console.log | typeof console.info) => {
+  const wrap = (orig: ((...args: unknown[]) => void)) => {
     return (...args: unknown[]) => {
       try {
         if (args.some(a => typeof a === 'string' && a.includes(BLOCKED_SUBSTRING))) return;
@@ -34,6 +34,7 @@ if (import.meta.env.DEV) {
   };
   console.info = wrap(console.info.bind(console));
   console.log = wrap(console.log.bind(console));
+  console.warn = wrap(console.warn.bind(console));
 }
 
 console.log('🚀 Starting React application...');
