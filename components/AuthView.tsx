@@ -197,8 +197,8 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center aurora-bg p-6">
-      <div className="mac-window auth-mac-window w-full max-w-2xl bg-white/95 backdrop-blur-xl rounded-[30px] shadow-2xl animate-fade-in relative overflow-hidden flex flex-col">
+    <div className="h-screen w-screen flex items-center justify-center aurora-bg p-4 sm:p-6">
+      <div className="mac-window auth-mac-window w-full max-w-3xl mx-auto bg-white/95 backdrop-blur-xl rounded-[30px] shadow-2xl animate-fade-in relative overflow-hidden flex flex-col full-height">
         {/* Status Indicator */}
         <div
           className={`absolute top-6 right-6 px-3 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shadow-sm border ${isOnline ? "bg-green-100 text-green-700 border-green-200" : "bg-slate-100 text-slate-500 border-slate-200"}`}
