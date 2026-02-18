@@ -16,7 +16,7 @@ import { useMusic } from '../contexts/MusicContext';
 import { useData } from '../contexts/DataContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { useError } from '../contexts/ErrorContext';
-import { Layout, Book, Menu, X, Zap, PenTool, UserCircle, FolderOpen, Lock, LogOut, Eye, LayoutDashboard, MessageSquare, ChevronRight, StickyNote, Calendar, FileText, Moon, Sun, Loader2, Search, Briefcase, Trophy, BarChart, Shield, Store, Award, PlusSquare, ChevronLeft, Bell, BrainCircuit, Music, Play, Pause, SkipForward, Check } from './icons/EmojiIcons';
+import { Layout, Book, Menu, X, Zap, PenTool, UserCircle, FolderOpen, Lock, LogOut, Eye, LayoutDashboard, MessageSquare, ChevronRight, StickyNote, Calendar, FileText, Moon, Sun, Loader2, Search, Briefcase, Trophy, BarChart, Shield, Store, Award, PlusSquare, ChevronLeft, Bell, BrainCircuit, Music, Play, Pause, SkipForward, Check, Apple, Desktop } from './icons/EmojiIcons';
 import { UNIT_QUIZZES, FINAL_EXAM, UNIT_ACTIVITIES, NOTEBOOK_MAX_SCORE, MIDTERM_EXAM } from '../constants';
 import { auth } from '../firebase';
 import { lazyWithRetry } from '../utils/lazyWithRetry';
@@ -151,7 +151,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ currentView, onNavigate, cour
 const App: React.FC = () => {
     const { user, userProgress, allProgress, updateProgress, logout, courseUnits, hasNewAnnouncements, markAnnouncementsAsSeen, notifications, unreadNotificationCount, markNotificationAsRead, markAllNotificationsAsRead, customQuizzes, customActivities, login } = useData();
   const { logError } = useError();
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, macosEnabled, toggleMacOS } = useTheme();
   const [currentView, setCurrentView] = useState<ViewState>(ViewState.LOGIN);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Mobile Menu
   const [isGlossaryOpen, setIsGlossaryOpen] = useState(false); 
@@ -640,6 +640,14 @@ const App: React.FC = () => {
                     title={theme === 'light' ? 'โหมดมืด' : 'โหมดสว่าง'}
                 >
                     {theme === 'light' ? <Moon size={16}/> : <Sun size={16}/>}
+                </button>
+                <button
+                  onClick={toggleMacOS}
+                  className={`w-8 h-8 rounded-full p-0.5 transition-colors flex items-center justify-center ${macosEnabled ? 'bg-white shadow-md text-purple-600' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'} dark:bg-slate-700 dark:text-slate-300`}
+                  title={macosEnabled ? 'ปิดธีม macOS' : 'ใช้ธีม macOS'}
+                  aria-pressed={macosEnabled}
+                >
+                  {macosEnabled ? <Apple size={14} /> : <Desktop size={14} />}
                 </button>
                 <div 
                     onClick={() => handleNav(ViewState.PROFILE)}
