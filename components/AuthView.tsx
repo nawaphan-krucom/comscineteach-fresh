@@ -197,11 +197,11 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center aurora-bg p-4">
-      <div className="mac-window w-full max-w-lg bg-white/90 backdrop-blur-xl rounded-[30px] shadow-2xl animate-fade-in relative overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="h-screen w-screen flex items-center justify-center aurora-bg p-6">
+      <div className="mac-window auth-mac-window w-full max-w-2xl bg-white/95 backdrop-blur-xl rounded-[30px] shadow-2xl animate-fade-in relative overflow-hidden flex flex-col">
         {/* Status Indicator */}
         <div
-          className={`absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-bold flex items-center gap-1.5 shadow-sm border ${isOnline ? "bg-green-100 text-green-700 border-green-200" : "bg-slate-100 text-slate-500 border-slate-200"}`}
+          className={`absolute top-6 right-6 px-3 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shadow-sm border ${isOnline ? "bg-green-100 text-green-700 border-green-200" : "bg-slate-100 text-slate-500 border-slate-200"}`}
         >
           {isOnline ? <Wifi size={12} /> : <WifiOff size={12} />}
           {isOnline ? "Online (Firebase)" : "Offline (Local)"}
@@ -213,8 +213,8 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
 
         <div className="relative z-10 p-8 flex-1 overflow-y-auto custom-scrollbar">
           <div className="text-center mb-6">
-            <div className="w-20 h-20 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg text-white">
-              <Book size={40} />
+            <div className="w-28 h-28 md:w-32 md:h-32 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl text-white">
+              <Book size={56} />
             </div>
             <h1 className="text-3xl font-bold text-slate-800 font-cute">
               {viewState === "login"
@@ -308,7 +308,7 @@ const AuthView: React.FC<AuthViewProps> = ({ onLogin }) => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-4 bg-slate-800 text-white rounded-xl font-bold shadow-lg hover:bg-slate-700 hover:scale-[1.02] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full py-5 login-cta rounded-xl font-bold shadow-2xl transition-transform transform-gpu flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isLoading ? (
                   <Loader2 className="animate-spin" size={20} />
