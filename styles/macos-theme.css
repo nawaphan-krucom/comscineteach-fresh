@@ -1,0 +1,170 @@
+/* macOS Big Sur / Monterey inspired theme tokens and base styles */
+:root {
+  /* Brand */
+  --c-brand: #0a84ff; /* macOS blue */
+  --c-bg: #f7f7fb;
+  --c-surface: rgba(255,255,255,0.65);
+  --c-muted: #6b7280;
+  --radius: 14px;
+  --shadow-sm: 0 1px 2px rgba(16,24,40,0.04);
+  --shadow-md: 0 10px 30px rgba(10, 10, 10, 0.08);
+  --glass-blur: 12px;
+  --glass-border: rgba(255,255,255,0.6);
+}
+
+:root.dark {
+  --c-bg: #0f1724;
+  --c-surface: rgba(18,20,24,0.55);
+  --c-muted: #9aa4b2;
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.7);
+}
+
+/* Apply to body / app shell */
+body, #root {
+  background: linear-gradient(180deg, var(--c-bg), var(--c-bg));
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-family: 'Kanit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Mac window look */
+.mac-window {
+  background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255,255,255,0.6);
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+:root.dark .mac-window {
+  background: linear-gradient(180deg, rgba(20,24,32,0.55), rgba(20,24,32,0.45));
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Header traffic lights */
+.header-traffic {
+  display:flex; gap:8px; align-items:center;
+}
+.header-traffic .dot { width:12px; height:12px; border-radius:50%; box-shadow: 0 1px 0 rgba(255,255,255,0.3); }
+.header-traffic .dot.close { background:#FF5F57; }
+.header-traffic .dot.min { background:#FEBC2E; }
+.header-traffic .dot.max { background:#28C840; }
+
+/* Override mac-action for close button to match dot size */
+.header-traffic .dot.close.mac-action { 
+  width:12px !important; 
+  height:12px !important; 
+  border-radius:50% !important; 
+  background:#FF5F57 !important; 
+  border: none !important; 
+  box-shadow: 0 1px 0 rgba(255,255,255,0.3) !important; 
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block !important;
+}
+
+/* Cards & Glass */
+.glass-card {
+  background: var(--c-surface);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(255,255,255,0.4);
+  backdrop-filter: blur(calc(var(--glass-blur) / 2));
+}
+
+/* Notification-specific glass card variant */
+.glass-card.notification-item {
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
+}
+.glass-card.notification-item:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(2,6,23,0.12); }
+
+/* small helper to make the 'ใหม่' pill */
+.pill-new { font-size: 10px; padding: 4px 8px; border-radius: 999px; font-weight:700 }
+
+
+/* Buttons */
+button {
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
+}
+
+button.primary {
+  background: linear-gradient(180deg, var(--c-brand), color-mix(in srgb, var(--c-brand) 85%, black 12%));
+  color: white;
+  box-shadow: 0 6px 18px rgba(10, 132, 255, 0.18);
+}
+
+button.ghost {
+  background: transparent;
+  color: var(--c-muted);
+  border: 1px solid rgba(100,100,110,0.06);
+}
+
+button:active { transform: translateY(1px) scale(.998); }
+
+/* Inputs */
+input, textarea, select {
+  background: rgba(0,0,0,0.02);
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  outline: none;
+}
+
+input:focus, textarea:focus {
+  box-shadow: 0 6px 20px rgba(10,132,255,0.12);
+  border-color: color-mix(in srgb, var(--c-brand) 70%, black 10%);
+}
+
+/* Slight tweaks for existing classes */
+.header { border-bottom: none; background: transparent; }
+
+/* Notebook / cards in unit wrapper */
+.unit-actions .grid { gap: 1.25rem; }
+.unit-actions .glass-card { transition: transform .15s ease; padding: 1.25rem; min-height: 140px; display:flex; flex-direction:column; justify-content:space-between; }
+.unit-actions .glass-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+
+/* Content spacing helpers */
+.content-section { padding: 1.25rem 0; margin: 0 0 1.5rem 0; }
+.content-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); align-items: start; }
+
+/* Responsive tweak for larger screens */
+@media (min-width: 1024px) {
+  .unit-actions .grid { gap: 1.5rem; }
+  .content-grid { gap: 1.5rem; }
+}
+
+/* Mobile: use slightly smaller radii */
+@media (max-width: 640px) {
+  :root { --radius: 12px; }
+  .mac-window { border-radius: 16px; }
+}
+
+/* Larger font size for ม.4 students */
+.font-m4 { font-size: 18px; }
+.font-m4 h2 { font-size: 2.5rem; }
+.font-m4 h3 { font-size: 1.5rem; }
+.font-m4 .glass-card { padding: 1.5rem; }
+
+/* Accessibility focus */
+:focus { outline: 2px solid color-mix(in srgb, var(--c-brand) 30%, white 70%); outline-offset: 2px; }
+
+/* Component helpers */
+.nav-item { display:flex; align-items:center; gap:0.75rem; transition: background .12s ease, transform .12s ease; border-radius: 10px; }
+.nav-item:hover { background: rgba(10, 20, 40, 0.03); transform: translateY(-2px); }
+.nav-item .icon { opacity: 0.95 }
+.nav-item .label { flex:1; text-align:left }
+.nav-item.disabled { opacity: 0.5; cursor: not-allowed }
+.nav-item.selected { background: linear-gradient(90deg, rgba(10,132,255,0.08), rgba(10,132,255,0.02)); box-shadow: 0 4px 18px rgba(10,132,255,0.06); color:var(--c-brand); }
+
+.mac-action { width:12px; height:12px; border-radius:50%; display:flex; align-items:center; justify-content:center; background: #FF5F57; border: none; box-shadow: 0 1px 0 rgba(255,255,255,0.3); }
+:root.dark .mac-action { background: #FF5F57; }
+

@@ -1,0 +1,5 @@
+﻿node_modules
+.DS_Store
+.env.local
+service account JSON.json
+computing-science-2569-e5db6562283a.json

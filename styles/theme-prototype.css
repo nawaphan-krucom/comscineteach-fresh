@@ -1,0 +1,47 @@
+/* Prototype design tokens (scoped with .theme-prototype) */
+:root {
+  --brand-500: #5b21b6;
+  --brand-600: #4c1d95;
+  --surface: #ffffff;
+  --muted: #94a3b8;
+  --radius-md: 12px;
+  --space-1: 6px;
+  --space-2: 12px;
+  --shadow-sm: 0 6px 18px rgba(15,23,42,0.06);
+}
+
+.theme-prototype {
+  --c-brand: var(--brand-500);
+  --c-brand-strong: var(--brand-600);
+  --c-surface: var(--surface);
+  --c-muted: var(--muted);
+  --radius: var(--radius-md);
+  --space-sm: var(--space-1);
+  --space-md: var(--space-2);
+  --shadow-sm: var(--shadow-sm);
+}
+
+/* primitives */
+.theme-prototype .proto-btn {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)), var(--c-brand);
+  color: white;
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.theme-prototype .proto-input {
+  border: 1px solid #e6e9ee;
+  padding: 0.5rem 0.75rem;
+  border-radius: calc(var(--radius) - 4px);
+  background: linear-gradient(180deg, #fff, #fbfdff);
+}
+
+.theme-prototype .proto-card {
+  background: var(--c-surface);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(15,23,42,0.03);
+}

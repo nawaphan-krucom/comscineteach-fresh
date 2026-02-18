@@ -1,0 +1,6 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/index.css");import { updateStyle as __vite__updateStyle, removeStyle as __vite__removeStyle } from "/@vite/client"
+const __vite__id = "C:/Users/Asus/Downloads/comscineteach-fresh-main/index.css"
+const __vite__css = "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n/* Minimal global styles (added to satisfy build/runtime requests) */\nhtml,\nbody,\n#root {\n  height: 100%;\n}\nbody {\n  margin: 0;\n  background: #e9ecef;\n  font-family:\n    \"Kanit\",\n    system-ui,\n    -apple-system,\n    \"Segoe UI\",\n    Roboto,\n    \"Helvetica Neue\",\n    Arial,\n    sans-serif;\n}\n\n/* Custom app-level styles (kept minimal) */\n\n:root {\n  --brand-primary: #0d9488;\n  --brand-primary-700: #0f766e;\n  --brand-success: #10b981;\n}\n\n/* Helper classes for quick design polish */\n.btn-primary {\n  @apply bg-primary text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all;\n}\n.modal-surface {\n  background: rgba(255, 255, 255, 0.85);\n  backdrop-filter: blur(6px);\n  border-radius: 1rem;\n  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);\n}\n"
+__vite__updateStyle(__vite__id, __vite__css)
+import.meta.hot.accept()
+import.meta.hot.prune(() => __vite__removeStyle(__vite__id))
