@@ -620,7 +620,7 @@ export const DESIGN_PROJECTS: DesignProject[] = [
 ];
 
 // Option 1 (Current): Transform from users_index.json (richer data with uid, seatNumber, auth flags)
-export const MOCK_USERS: User[] = (STUDENT_EXPORT as any[]).map(s => ({
+export const MOCK_USERS: User[] = (STUDENT_EXPORT as any[] || []).map(s => ({
   id: String(s.uid || s.studentId || s.docId || s.username || s.id || ''),
   username: String(s.studentId || s.docId || ''),
   name: s.displayName || s.name || 'นักเรียน',

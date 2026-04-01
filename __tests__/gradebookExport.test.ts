@@ -1,8 +1,10 @@
 import { buildGradebookCsv, buildModalDetailsCsv, exportGradebookToXlsx, exportModalDetailsToXlsx } from '../components/utils/gradebookExport';
 
-jest.mock('xlsx', () => ({
-  utils: { aoa_to_sheet: jest.fn(() => ({})), book_new: jest.fn(() => ({})), book_append_sheet: jest.fn(() => ({})) },
-  write: jest.fn(() => new Uint8Array([1, 2, 3]))
+jest.mock('exceljs', () => ({
+  Workbook: jest.fn(() => ({
+    addWorksheet: jest.fn(() => ({ addRow: jest.fn() })),
+    xlsx: { writeBuffer: jest.fn(() => Promise.resolve(new Uint8Array([1, 2, 3]))) }
+  }))
 }));
 
 describe('gradebookExport', () => {

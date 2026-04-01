@@ -1,4 +1,4 @@
-import * as XLSX from 'xlsx';
+import ExcelJS from 'exceljs';
 
 export type UnitSummary = {
   unit: { id: string; title?: string; order?: number };
@@ -76,20 +76,18 @@ export function buildModalDetailsCsv(student: any, unitSummary: UnitSummary, all
 }
 
 export async function exportModalDetailsToXlsx(student: any, unitSummary: UnitSummary, allProgress?: Record<string, any>): Promise<void> {
-  const sheetData: Array<Array<string | number>> = [];
-  sheetData.push(['Assessment', 'Score', 'Max', 'Percentage']);
+  const wb = new ExcelJS.Workbook();
+  const ws = wb.addWorksheet('Details');
+  ws.addRow(['Assessment', 'Score', 'Max', 'Percentage']);
   for (const a of unitSummary.assessments) {
     const { score } = getUnitScoreForStudent(student.id, { ...unitSummary, assessments: [a], totalMaxScore: a.maxScore || 0 }, allProgress || {});
     const max = a.maxScore || 0;
     const pct = max ? Math.round((score / max) * 100) : 0;
-    sheetData.push([a.title || a.id, score, max, pct]);
+    ws.addRow([a.title || a.id, score, max, pct]);
   }
 
-  const ws = XLSX.utils.aoa_to_sheet(sheetData);
-  const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Details');
-  const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-  const blob = new Blob([wbout], { type: 'application/octet-stream' });
+  const buffer = await wb.xlsx.writeBuffer();
+  const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
@@ -101,9 +99,11 @@ export async function exportModalDetailsToXlsx(student: any, unitSummary: UnitSu
 }
 
 export async function exportGradebookToXlsx(students: any[], unitsSummary: UnitSummary[], allProgress: Record<string, any>): Promise<void> {
-  const sheetData: Array<Array<string | number>> = [];
+  const wb = new ExcelJS.Workbook();
+  const ws = wb.addWorksheet('Gradebook');
+
   const header = ['studentId', 'name', 'class', 'totalScore', 'totalMax', ...unitsSummary.map(u => `${u.unit.id}_score`), ...unitsSummary.map(u => `${u.unit.id}_pct`)];
-  sheetData.push(header);
+  ws.addRow(header);
 
   for (const s of students) {
     let totalScore = 0;
@@ -120,14 +120,11 @@ export async function exportGradebookToXlsx(students: any[], unitsSummary: UnitS
       return max ? Math.round((sc / max) * 100) : 0;
     });
     const name = s.firstName && s.lastName ? `${s.firstName} ${s.lastName}` : s.name || '';
-    sheetData.push([s.id, name, `${s.classLevel || ''}/${s.room || ''}`, totalScore, totalMax, ...perUnitScores, ...pctCols]);
+    ws.addRow([s.id, name, `${s.classLevel || ''}/${s.room || ''}`, totalScore, totalMax, ...perUnitScores, ...pctCols]);
   }
 
-  const ws = XLSX.utils.aoa_to_sheet(sheetData);
-  const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Gradebook');
-  const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-  const blob = new Blob([wbout], { type: 'application/octet-stream' });
+  const buffer = await wb.xlsx.writeBuffer();
+  const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;

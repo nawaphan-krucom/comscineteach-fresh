@@ -18,6 +18,25 @@ if (!rootElement) {
   throw new Error("Could not find root element to mount to");
 }
 
+// Suppress React DevTools suggestion banner in dev console (harmless informational message).
+// We only silence this exact message during local development so real warnings/errors still appear.
+if (import.meta.env.DEV) {
+  const BLOCKED_SUBSTRING = 'Download the React DevTools for a better development experience';
+  const wrap = (orig: ((...args: unknown[]) => void)) => {
+    return (...args: unknown[]) => {
+      try {
+        if (args.some(a => typeof a === 'string' && a.includes(BLOCKED_SUBSTRING))) return;
+      } catch {
+        /* ignore */
+      }
+      orig(...args);
+    };
+  };
+  console.info = wrap(console.info.bind(console));
+  console.log = wrap(console.log.bind(console));
+  console.warn = wrap(console.warn.bind(console));
+}
+
 console.log('🚀 Starting React application...');
 console.log('📱 Root element found:', rootElement);
 
